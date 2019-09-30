@@ -1,0 +1,14 @@
+build/
+dist/
+logs/
+static/
+node_modules/
+dist/
+coverage/
+.DS_Store
+.idea
+build-info.js
+lerna-debug.log
+npm-local.log
+yarn-error.log
+*.iml
