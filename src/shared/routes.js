@@ -1,5 +1,6 @@
 import Home from "./containers/Home";
 import About from "./containers/About";
+import ParentComponent from "./containers/ParentComponent"
 
 
 const routes = [
@@ -13,6 +14,11 @@ const routes = [
     exact:false,
     component: About
   },
+  {
+    path:"/parent",
+    exact:false,
+    component:ParentComponent
+  }
  
 
 ];
