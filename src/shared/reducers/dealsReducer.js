@@ -23,6 +23,7 @@ const dealsReducer = (state = defaultDealsState, action) => {
 		case actionType.LOAD_DEALS_COMPLATE:
 		{
 			console.log("LOAD_DEALS_COMPLATE ",action,  action.payload);
+			
 
 			let newState = {
 				deals: action.payload, 

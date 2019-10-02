@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux';
 export class ChildB extends Component {
+   
+   
     render() {
         return (
             <div>
@@ -14,5 +16,13 @@ export class ChildB extends Component {
         )
     }
 }
+const mapStateToProps = (state) => 
+   {
+    return {count: state.count};
+   }
+  
 
-export default ChildB
+export default connect (
+    mapStateToProps,
+    null
+)(ChildB)

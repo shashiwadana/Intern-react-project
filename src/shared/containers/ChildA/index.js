@@ -1,23 +1,20 @@
-import React, { Component } from 'react'
-
-export class ChildA extends Component {
+import React, { Component } from 'react';
+import configureStore from '../../configureStore';
+import { connect } from 'react-redux';
+export function ChildA ({dispatch}){
     
-    
-    render() {
-        
-
         return (
-           
+            // Count is:{this.props.count}
             <div>
-                
-                <div>
-                Count is:{this.props.count}
-                </div>
-                <button onClick={this.props.increment}>increment</button>
+               
+                <button onClick={()=>dispatch({type:'UPDATE_COUNT'})}>increment</button>
                
             </div>
         )
-    }
+    
 }
 
-export default ChildA
+export default connect(
+    null,
+    null
+)(ChildA)

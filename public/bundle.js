@@ -24545,7 +24545,7 @@ module.exports = ReactDOMInvalidARIAHook;
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
 /* unused harmony reexport createProvider */
 /* unused harmony reexport connectAdvanced */
-/* unused harmony reexport connect */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__connect_connect__["a"]; });
 
 
 
@@ -24915,7 +24915,7 @@ function createConnect() {
   };
 }
 
-/* unused harmony default export */ var _unused_webpack_default_export = (createConnect());
+/* harmony default export */ __webpack_exports__["a"] = (createConnect());
 
 /***/ }),
 /* 217 */
@@ -27990,6 +27990,12 @@ var configureStore = function configureStore(preloadedState) {
   return Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(__WEBPACK_IMPORTED_MODULE_2__reducers__["a" /* default */], preloadedState, Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_1_redux_thunk___default.a));
 };
 
+console.log(configureStore().getState());
+//const unsubscribe= configureStore().subscribe(()=>console.log('Updated count',configureStore.getState()))
+//configureStore.dispatch(countUpdate())
+//store.dispatch(countUpdate())
+//unsubscribe()
+
 /* harmony default export */ __webpack_exports__["a"] = (configureStore);
 
 /***/ }),
@@ -28028,11 +28034,14 @@ exports['default'] = thunk;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dealsReducer__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__countReducer__ = __webpack_require__(278);
+
 
 
 
 var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({
-	dealsReducer: __WEBPACK_IMPORTED_MODULE_1__dealsReducer__["a" /* default */]
+	dealsReducer: __WEBPACK_IMPORTED_MODULE_1__dealsReducer__["a" /* default */],
+	countReducer: __WEBPACK_IMPORTED_MODULE_2__countReducer__["a" /* default */]
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (allReducers);
@@ -28110,7 +28119,7 @@ var dealsReducer = function dealsReducer() {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return LOAD_DEALS_COMPLATE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LOAD_DEALS_ERROR; });
 /* unused harmony export FILTER_DEALS_BY_PRICE */
-/* unused harmony export UPDATE_COUNT */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return UPDATE_COUNT; });
 /* DEAL ACTIONS */
 var LOAD_DEALS_BEGINS = 'LOAD_DEALS_BEGINS';
 var LOAD_DEALS_COMPLATE = 'LOAD_DEALS_COMPLATE';
@@ -28494,23 +28503,9 @@ var ParentComponent = function (_Component) {
     _inherits(ParentComponent, _Component);
 
     function ParentComponent() {
-        var _ref;
-
-        var _temp, _this, _ret;
-
         _classCallCheck(this, ParentComponent);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
-
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ParentComponent.__proto__ || Object.getPrototypeOf(ParentComponent)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-            count: 0
-        }, _this.increment = function () {
-            _this.setState({
-                count: _this.state.count + 1
-            });
-        }, _temp), _possibleConstructorReturn(_this, _ret);
+        return _possibleConstructorReturn(this, (ParentComponent.__proto__ || Object.getPrototypeOf(ParentComponent)).apply(this, arguments));
     }
 
     _createClass(ParentComponent, [{
@@ -28521,20 +28516,21 @@ var ParentComponent = function (_Component) {
                 "div",
                 { className: "parent", __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 17
+                        lineNumber: 10
                     },
                     __self: this
                 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__containers_ChildA__["a" /* default */], { count: this.state.count,
-                    increment: this.increment, __source: {
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__containers_ChildA__["a" /* default */], {
+                    __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 19
+                        lineNumber: 12
                     },
                     __self: this
                 }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__containers_ChildB__["a" /* default */], { count: this.state.count, __source: {
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__containers_ChildB__["a" /* default */], {
+                    __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 22
+                        lineNumber: 14
                     },
                     __self: this
                 })
@@ -28555,70 +28551,44 @@ var ParentComponent = function (_Component) {
 /* unused harmony export ChildA */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__configureStore__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(212);
 var _jsxFileName = 'D:\\intern-redux project\\Intern-react-project\\src\\shared\\containers\\ChildA\\index.js';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
+function ChildA(_ref) {
+    var dispatch = _ref.dispatch;
 
-var ChildA = function (_Component) {
-    _inherits(ChildA, _Component);
 
-    function ChildA() {
-        _classCallCheck(this, ChildA);
-
-        return _possibleConstructorReturn(this, (ChildA.__proto__ || Object.getPrototypeOf(ChildA)).apply(this, arguments));
-    }
-
-    _createClass(ChildA, [{
-        key: 'render',
-        value: function render() {
-
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                {
-                    __source: {
+    return (
+        // Count is:{this.props.count}
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 8
+                },
+                __self: this
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'button',
+                { onClick: function onClick() {
+                        return dispatch({ type: 'UPDATE_COUNT' });
+                    }, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 11
+                        lineNumber: 10
                     },
                     __self: this
                 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 13
-                        },
-                        __self: this
-                    },
-                    'Count is:',
-                    this.props.count
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'button',
-                    { onClick: this.props.increment, __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 16
-                        },
-                        __self: this
-                    },
-                    'increment'
-                )
-            );
-        }
-    }]);
+                'increment'
+            )
+        )
+    );
+}
 
-    return ChildA;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (ChildA);
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(null, null)(ChildA));
 
 /***/ }),
 /* 275 */
@@ -28628,6 +28598,7 @@ var ChildA = function (_Component) {
 /* unused harmony export ChildB */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(212);
 var _jsxFileName = 'D:\\intern-redux project\\Intern-react-project\\src\\shared\\containers\\ChildB\\index.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -28657,7 +28628,7 @@ var ChildB = function (_Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 6
+                        lineNumber: 8
                     },
                     __self: this
                 },
@@ -28666,7 +28637,7 @@ var ChildB = function (_Component) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 10
+                            lineNumber: 12
                         },
                         __self: this
                     },
@@ -28679,14 +28650,52 @@ var ChildB = function (_Component) {
 
     return ChildB;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+var mapStateToProps = function mapStateToProps(state) {
+    return { count: state.count };
+};
 
-/* harmony default export */ __webpack_exports__["a"] = (ChildB);
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps, null)(ChildB));
 
 /***/ }),
 /* 276 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 277 */,
+/* 278 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__ = __webpack_require__(267);
+
+
+var defaultCountState = {
+    count: 0
+};
+
+var countReducer = function countReducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultCountState;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["d" /* UPDATE_COUNT */]:
+            {
+                console.log("update_count_begins", action, action.payload);
+
+                var newState = {
+                    count: state.count + 1
+                };
+                state = Object.assign({}, state, { count: newState });
+                console.log("updated", action, action.payload);
+                break;
+            }
+
+    }
+    return state;
+};
+/* harmony default export */ __webpack_exports__["a"] = (countReducer);
 
 /***/ })
 /******/ ]);

@@ -14,6 +14,7 @@ const countReducer= (state=defaultCountState,action) =>{
                 count:state.count +1
             }
             state = {...state, count: newState }
+            console.log("updated",action,action.payload);
             break;
         }
         
