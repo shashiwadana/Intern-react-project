@@ -11,8 +11,10 @@ const countReducer= (state=defaultCountState,action) =>{
             console.log("update_count_begins", action, action.payload);
 
             let newState={
-                count:state.count +1
+                count:state.count++
+                
             }
+           console.log(newState.count);
             state = {...state, count: newState }
             console.log("updated",action,action.payload);
             break;

@@ -28685,8 +28685,10 @@ var countReducer = function countReducer() {
                 console.log("update_count_begins", action, action.payload);
 
                 var newState = {
-                    count: state.count + 1
+                    count: state.count++
+
                 };
+                console.log(newState.count);
                 state = Object.assign({}, state, { count: newState });
                 console.log("updated", action, action.payload);
                 break;
