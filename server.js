@@ -44295,11 +44295,13 @@ var dealsReducer = function dealsReducer() {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return LOAD_DEALS_COMPLATE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LOAD_DEALS_ERROR; });
 /* unused harmony export FILTER_DEALS_BY_PRICE */
+/* unused harmony export UPDATE_COUNT */
 /* DEAL ACTIONS */
 var LOAD_DEALS_BEGINS = 'LOAD_DEALS_BEGINS';
 var LOAD_DEALS_COMPLATE = 'LOAD_DEALS_COMPLATE';
 var LOAD_DEALS_ERROR = 'LOAD_DEALS_ERROR';
 var FILTER_DEALS_BY_PRICE = 'FILTER_DEALS_BY_PRICE';
+var UPDATE_COUNT = 'UPDATE_COUNT';
 
 /***/ }),
 /* 366 */
