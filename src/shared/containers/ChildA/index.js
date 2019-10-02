@@ -11,7 +11,7 @@ export class ChildA extends Component {
             <div>
                 
                 <div>
-                count is:{this.props.count}
+                Count is:{this.props.count}
                 </div>
                 <button onClick={this.props.increment}>increment</button>
                

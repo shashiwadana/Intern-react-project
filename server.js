@@ -44074,7 +44074,7 @@ var ChildA = function (_Component) {
                         },
                         __self: this
                     },
-                    'count is:',
+                    'Count is:',
                     this.props.count
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
