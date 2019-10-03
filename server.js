@@ -44066,8 +44066,9 @@ var _jsxFileName = 'D:\\intern-redux project\\Intern-react-project\\src\\shared\
 
 
 
+
 function ChildA(_ref) {
-    var dispatch = _ref.dispatch;
+    var updateCount = _ref.updateCount;
 
 
     return (
@@ -44077,17 +44078,15 @@ function ChildA(_ref) {
             {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 8
+                    lineNumber: 9
                 },
                 __self: this
             },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'button',
-                { onClick: function onClick() {
-                        return dispatch({ type: 'UPDATE_COUNT' });
-                    }, __source: {
+                { onClick: updateCount, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 10
+                        lineNumber: 11
                     },
                     __self: this
                 },
@@ -44096,8 +44095,17 @@ function ChildA(_ref) {
         )
     );
 }
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        updateCount: function updateCount() {
+            return dispatch({
+                type: 'UPDATE_COUNT'
+            });
+        }
+    };
+};
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(null, null)(ChildA));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(null, mapDispatchToProps)(ChildA));
 
 /***/ }),
 /* 362 */
