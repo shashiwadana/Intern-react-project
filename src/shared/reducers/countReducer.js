@@ -4,19 +4,19 @@ const defaultCountState={
     count:0,
 }
 
-const countReducer= (state=defaultCountState,action) =>{
+const countReducer = (state=defaultCountState,action) =>{
     switch(action.type){
         case actionType.UPDATE_COUNT:
         {
             console.log("update_count_begins", action, action.payload);
 
             let newState={
-                count:state.count++
+                count:Number(state.count)+1
                 
             }
-           console.log(newState.count);
+            console.log("new state " +newState.count);
             state = {...state, count: newState }
-            console.log("updated",action,action.payload);
+            console.log("updated ",action,action.payload);
             break;
         }
         

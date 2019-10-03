@@ -5,7 +5,7 @@ import reducer from "./reducers";
 const configureStore = preloadedState =>
   createStore(reducer, preloadedState, applyMiddleware(thunk));
 
-  console.log(configureStore().getState());
+  console.log("store state:" +configureStore().getState());
  //const unsubscribe= configureStore().subscribe(()=>console.log('Updated count',configureStore.getState()))
   //configureStore.dispatch(countUpdate())
   //store.dispatch(countUpdate())
