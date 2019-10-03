@@ -8,6 +8,8 @@ import serialize from "serialize-javascript";
 import routes from "../shared/routes";
 import configureStore from "../shared/configureStore";
 import App from "../shared/App";
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 import "source-map-support/register";
 
 const app = express();

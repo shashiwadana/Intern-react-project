@@ -1,6 +1,7 @@
 import Home from "./containers/Home";
 import About from "./containers/About";
 import ParentComponent from "./containers/ParentComponent"
+import ReduxTest from "./containers/ReduxTest"
 
 
 const routes = [
@@ -18,8 +19,12 @@ const routes = [
     path:"/parent",
     exact:false,
     component:ParentComponent
+  },
+  {
+    path:"/redux-test",
+    exact:false,
+    component:ReduxTest
   }
- 
 
 ];
 

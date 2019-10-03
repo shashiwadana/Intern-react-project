@@ -1,10 +1,14 @@
 import * as actionType from './ActionType';
+import fetch from 'isomorphic-fetch';
 
 
 //Api Call And Fetch Data
 export function fetchDeals() {
   return dispatch => {
     dispatch(loadDealsBegin());
+
+    console.log('Deal Fetching');
+
     return fetch("https://jsonplaceholder.typicode.com/photos")     
       .then(res => res.json())
       .then(json => {
