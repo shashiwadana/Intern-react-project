@@ -1,24 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-export class ChildB extends Component {
-   
-    render() {
-        console.log("prop state " +this.props.count);
+
+export function ChildB ({count}) {
         return (
-            <div>        
-    <h4>Count is :{this.props.count}</h4>
-        
+            <div>
+    <h4>count :{count} </h4> 
             </div>
         )
-    }
+ 
 }
-const mapStateToProps = (state) => 
-   {
-    return {count: state.count};
-   }
-  
 
-export default connect (
-    mapStateToProps,
-    null
-)(ChildB)
+const mapStateToProps = state =>({
+    count:state.count
+}
+
+)
+export default connect(mapStateToProps) (ChildB)

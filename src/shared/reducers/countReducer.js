@@ -8,19 +8,20 @@ const countReducer = (state=defaultCountState,action) =>{
     switch(action.type){
         case actionType.UPDATE_COUNT:
         {
-            console.log("update_count_begins", action, action.payload);
+            console.log("update_count_begins", action);
 
             let newState={
-                count:Number(state.count)+1
+                count:state.count+1
                 
             }
             console.log("new state " +newState.count);
-            state = {...state, count: newState }
-            console.log("updated ",action,action.payload);
+            state = { ...state, count: newState }
+            console.log("updated ",state.count);
             break;
         }
         
     }
     return state;
+    
 }
 export default countReducer;

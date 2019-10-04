@@ -1,29 +1,26 @@
-import React, { Component } from 'react';
-import configureStore from '../../configureStore';
+import React, { Component } from 'react'
 import { connect } from 'react-redux';
-
-export function ChildA ({updateCount}){
+//import updateCount from '../../actions/CountActions';
+import {countUpdate} from '../../actions/CountActions';
+function ChildA ({count,countUpdate}) {
     
-        return (
-            // Count is:{this.props.count}
-            <div>
-               
-                <button onClick={updateCount}>increment</button>
-               
+        return (           
+            <div>             
+                <button onClick={countUpdate}>increment</button>           
+                <h6>count : {count}</h6> 
+                             
             </div>
-        )
+        );
     
 }
-const mapDispatchToProps =dispatch =>{
-    return{
-        updateCount:()=>
-        dispatch({
-            type:'UPDATE_COUNT'
-        })
-    }
-}
+const mapStateToProps = state =>({
+    
+    count:state.count
+});
 
-export default connect(
-    null,
-    mapDispatchToProps
-)(ChildA)
+const mapDispatchToProps =dispatch=>({
+   
+    countUpdate: () =>dispatch(countUpdate()),
+
+});
+export default connect(mapStateToProps,mapDispatchToProps)(ChildA)

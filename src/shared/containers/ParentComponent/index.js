@@ -9,9 +9,9 @@ import ChildB from "../../containers/ChildB";
         return (
             <div className="parent">
             
-               <ChildA />
-                        
-                <ChildB />
+              <ChildA />
+                       
+               
                 
             </div>
         )

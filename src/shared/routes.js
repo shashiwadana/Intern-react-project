@@ -3,6 +3,7 @@ import About from "./containers/About";
 import ParentComponent from "./containers/ParentComponent"
 
 
+
 const routes = [
   {
     path: "/",
@@ -18,7 +19,8 @@ const routes = [
     path:"/parent",
     exact:false,
     component:ParentComponent
-  }
+  },
+  
  
 
 ];
