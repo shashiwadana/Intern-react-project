@@ -44115,56 +44115,51 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var ChildB = function (_Component) {
-    _inherits(ChildB, _Component);
+        _inherits(ChildB, _Component);
 
-    function ChildB(props) {
-        _classCallCheck(this, ChildB);
+        function ChildB() {
+                _classCallCheck(this, ChildB);
 
-        return _possibleConstructorReturn(this, (ChildB.__proto__ || Object.getPrototypeOf(ChildB)).call(this, props));
-    }
-
-    _createClass(ChildB, [{
-        key: 'render',
-        value: function render() {
-            /*
-            const count=this.props;
-            console.log('count is :');
-            console.log(count);
-            */
-
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                {
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 19
-                    },
-                    __self: this
-                },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'h4',
-                    {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 20
-                        },
-                        __self: this
-                    },
-                    'count :',
-                    this.props.count,
-                    ' '
-                )
-            );
+                return _possibleConstructorReturn(this, (ChildB.__proto__ || Object.getPrototypeOf(ChildB)).apply(this, arguments));
         }
-    }]);
 
-    return ChildB;
+        _createClass(ChildB, [{
+                key: 'render',
+                value: function render() {
+
+                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                {
+                                        __source: {
+                                                fileName: _jsxFileName,
+                                                lineNumber: 10
+                                        },
+                                        __self: this
+                                },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'h4',
+                                        {
+                                                __source: {
+                                                        fileName: _jsxFileName,
+                                                        lineNumber: 11
+                                                },
+                                                __self: this
+                                        },
+                                        'count :',
+                                        this.props.count,
+                                        ' '
+                                )
+                        );
+                }
+        }]);
+
+        return ChildB;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 var mapStateToProps = function mapStateToProps(state) {
-    return {
-        count: state.countR.count
-    };
+        return {
+                count: state.countR.count
+        };
 };
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps)(ChildB));
 
