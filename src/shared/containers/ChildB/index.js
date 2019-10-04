@@ -9,12 +9,15 @@ export class ChildB extends Component {
     }
     
     render(){
-        const count=this.props.count;
+        /*
+        const count=this.props;
+        console.log('count is :');
         console.log(count);
+        */
             
         return (
                 <div>
-        <h4>count :{count} </h4> 
+        <h4>count :{this.props.count} </h4> 
                 </div>
             )
         }
@@ -22,7 +25,7 @@ export class ChildB extends Component {
 }
 
 const mapStateToProps = state =>({
-    count:state.count
+    count:state.countR.count
 }
 
 )

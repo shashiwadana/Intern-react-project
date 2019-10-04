@@ -4,7 +4,7 @@ import countReducer from './countReducer';
 
 const allReducers = combineReducers({
 	dealsReducer,
-	countReducer
+	countR:countReducer
 });
 
 export default allReducers;

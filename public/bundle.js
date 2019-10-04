@@ -28054,7 +28054,7 @@ exports['default'] = thunk;
 
 var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({
 	dealsReducer: __WEBPACK_IMPORTED_MODULE_1__dealsReducer__["a" /* default */],
-	countReducer: __WEBPACK_IMPORTED_MODULE_2__countReducer__["a" /* default */]
+	countR: __WEBPACK_IMPORTED_MODULE_2__countReducer__["a" /* default */]
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (allReducers);
@@ -28674,15 +28674,18 @@ var ChildB = function (_Component) {
     _createClass(ChildB, [{
         key: 'render',
         value: function render() {
-            var count = this.props.count;
+            /*
+            const count=this.props;
+            console.log('count is :');
             console.log(count);
+            */
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 16
+                        lineNumber: 19
                     },
                     __self: this
                 },
@@ -28691,12 +28694,12 @@ var ChildB = function (_Component) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 17
+                            lineNumber: 20
                         },
                         __self: this
                     },
                     'count :',
-                    count,
+                    this.props.count,
                     ' '
                 )
             );
@@ -28708,7 +28711,7 @@ var ChildB = function (_Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
     return {
-        count: state.count
+        count: state.countR.count
     };
 };
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps)(ChildB));
