@@ -28131,31 +28131,30 @@ var dealsReducer = function dealsReducer() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__ = __webpack_require__(64);
 
 
-var defaultCountState = {
-    count: 0
-};
-
 var countReducer = function countReducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultCountState;
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { count: 0 };
     var action = arguments[1];
 
     switch (action.type) {
         case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["d" /* UPDATE_COUNT */]:
             {
                 console.log("update_count_begins", action);
-
-                var newState = {
-                    count: state.count + 1
-
-                };
-                console.log("new state " + newState.count);
-                state = Object.assign({}, state, { count: newState });
-                console.log("updated ", state.count);
-                break;
+                /*
+                let newState={
+                    count:state.count+1
+                    
+                }*/
+                //console.log("new state " +newState.count);
+                //state = { ...state, count: newState }
+                //console.log("updated ",state.count);
+                //break;
+                return { count: state.count + 1 };
             }
+        default:
+            return state;
 
     }
-    return state;
+    //return state;
 };
 /* harmony default export */ __webpack_exports__["a"] = (countReducer);
 
