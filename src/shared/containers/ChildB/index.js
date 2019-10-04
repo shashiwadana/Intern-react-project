@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
-export function ChildB ({count}) {
+export class ChildB extends Component {
+       
+    constructor(props) {
+        super(props)
+    
+    }
+    
+    render(){
+        const count=this.props.count;
+        console.log(count);
+            
         return (
-            <div>
-    <h4>count :{count} </h4> 
-            </div>
-        )
+                <div>
+        <h4>count :{count} </h4> 
+                </div>
+            )
+        }
  
 }
 

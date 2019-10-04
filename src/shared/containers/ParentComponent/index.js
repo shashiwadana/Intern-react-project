@@ -11,7 +11,7 @@ import ChildB from "../../containers/ChildB";
             
               <ChildA />
                        
-               
+               <ChildB />
                 
             </div>
         )

@@ -6,21 +6,18 @@ function ChildA ({count,countUpdate}) {
     
         return (           
             <div>             
-                <button onClick={countUpdate}>increment</button>           
-                <h6>count : {count}</h6> 
+                <button onClick={countUpdate}>increment</button>
+            
+             
                              
             </div>
         );
     
 }
-const mapStateToProps = state =>({
-    
-    count:state.count
-});
 
 const mapDispatchToProps =dispatch=>({
    
     countUpdate: () =>dispatch(countUpdate()),
 
 });
-export default connect(mapStateToProps,mapDispatchToProps)(ChildA)
+export default connect(null,mapDispatchToProps)(ChildA)
