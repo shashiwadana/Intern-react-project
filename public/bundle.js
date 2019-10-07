@@ -28233,6 +28233,8 @@ var App = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__containers_Home__ = __webpack_require__(271);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__containers_About__ = __webpack_require__(272);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__containers_ParentComponent__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__containers_DbTest__ = __webpack_require__(280);
+
 
 
 
@@ -28249,6 +28251,10 @@ var routes = [{
   path: "/parent",
   exact: false,
   component: __WEBPACK_IMPORTED_MODULE_2__containers_ParentComponent__["a" /* default */]
+}, {
+  path: "/db",
+  exact: false,
+  component: __WEBPACK_IMPORTED_MODULE_3__containers_DbTest__["a" /* DbTest */]
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (routes);
@@ -28715,6 +28721,104 @@ var mapStateToProps = function mapStateToProps(state) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 279 */,
+/* 280 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DbTest; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _jsxFileName = 'D:\\intern-redux project\\Intern-react-project\\src\\shared\\containers\\DbTest\\index.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var DbTest = function (_Component) {
+    _inherits(DbTest, _Component);
+
+    function DbTest(props) {
+        _classCallCheck(this, DbTest);
+
+        var _this = _possibleConstructorReturn(this, (DbTest.__proto__ || Object.getPrototypeOf(DbTest)).call(this, props));
+
+        _this.state = {
+            users: []
+        };
+        return _this;
+    }
+
+    _createClass(DbTest, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            fetch('http://localhost:3000/dbUser').then(function (response) {
+                return response.json();
+            }).then(function (users) {
+                return console.log(_this2.setState({ users: users }));
+            }).catch(function (error) {
+                return console.log(error);
+            });
+            //console.log(response);
+        }
+        //showUsers = user =><div key={user.Name}>{user.Name}</div>
+
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 23
+                    },
+                    __self: this
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'ul',
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 24
+                        },
+                        __self: this
+                    },
+                    this.state.users.map(function (user) {
+                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'h6',
+                            {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 26
+                                },
+                                __self: _this3
+                            },
+                            ' ',
+                            user.Name
+                        );
+                    })
+                )
+            );
+        }
+    }]);
+
+    return DbTest;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* unused harmony default export */ var _unused_webpack_default_export = (DbTest);
 
 /***/ })
 /******/ ]);

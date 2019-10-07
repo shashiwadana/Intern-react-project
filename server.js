@@ -18552,6 +18552,8 @@ Link.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__containers_Home__ = __webpack_require__(356);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__containers_About__ = __webpack_require__(357);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__containers_ParentComponent__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__containers_DbTest__ = __webpack_require__(455);
+
 
 
 
@@ -18568,6 +18570,10 @@ var routes = [{
   path: "/parent",
   exact: false,
   component: __WEBPACK_IMPORTED_MODULE_2__containers_ParentComponent__["a" /* default */]
+}, {
+  path: "/db",
+  exact: false,
+  component: __WEBPACK_IMPORTED_MODULE_3__containers_DbTest__["a" /* DbTest */]
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (routes);
@@ -19405,13 +19411,13 @@ var _jsxFileName = "D:\\intern-redux project\\Intern-react-project\\src\\server\
 
 
 
-
+//bodyParser = require('body-parser');
 var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 
 app.use(__WEBPACK_IMPORTED_MODULE_1_cors___default()());
 app.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.static("public"));
 
-//var express = require('express');
+//db connection
 var mysql = __webpack_require__(390);
 
 var connection = mysql.createConnection({
@@ -19427,24 +19433,25 @@ connection.connect(function (error) {
     console.log('connected to database');
   }
 });
-
 app.use(function (req, res, next) {
   req.connection = connection;
   next();
 });
 
-/*
-app.get('/about',function(req,res){
-  connection.query("SELECT * FROM User",function(error,rows,feilds){
-  if(!!error){
-    console.log('Error query');
-  }
-  else{
-    console.log('success query');
-    console.log(rows);
-  }
-})
-});*/
+app.get('/dbUser', function (req, res) {
+  connection.query("SELECT * FROM User", function (error, rows, feilds) {
+    if (!!error) {
+      console.log('Error query');
+    } else {
+      console.log('success query');
+      console.log(rows);
+      res.send(rows);
+    }
+  });
+});
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
+
 
 app.get("*", function (req, res, next) {
   var store = Object(__WEBPACK_IMPORTED_MODULE_8__shared_configureStore__["a" /* default */])();
@@ -19463,7 +19470,7 @@ app.get("*", function (req, res, next) {
       __WEBPACK_IMPORTED_MODULE_4_react_redux__["a" /* Provider */],
       { store: store, __source: {
           fileName: _jsxFileName,
-          lineNumber: 71
+          lineNumber: 73
         },
         __self: _this
       },
@@ -19471,14 +19478,14 @@ app.get("*", function (req, res, next) {
         __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* StaticRouter */],
         { location: req.url, context: context, __source: {
             fileName: _jsxFileName,
-            lineNumber: 72
+            lineNumber: 74
           },
           __self: _this
         },
         __WEBPACK_IMPORTED_MODULE_2_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__shared_App__["a" /* default */], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 73
+            lineNumber: 75
           },
           __self: _this
         })
@@ -61253,6 +61260,103 @@ PoolNamespace.prototype._getClusterNode = function _getClusterNode() {
     : null;
 };
 
+
+/***/ }),
+/* 455 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DbTest; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _jsxFileName = 'D:\\intern-redux project\\Intern-react-project\\src\\shared\\containers\\DbTest\\index.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var DbTest = function (_Component) {
+    _inherits(DbTest, _Component);
+
+    function DbTest(props) {
+        _classCallCheck(this, DbTest);
+
+        var _this = _possibleConstructorReturn(this, (DbTest.__proto__ || Object.getPrototypeOf(DbTest)).call(this, props));
+
+        _this.state = {
+            users: []
+        };
+        return _this;
+    }
+
+    _createClass(DbTest, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            fetch('http://localhost:3000/dbUser').then(function (response) {
+                return response.json();
+            }).then(function (users) {
+                return console.log(_this2.setState({ users: users }));
+            }).catch(function (error) {
+                return console.log(error);
+            });
+            //console.log(response);
+        }
+        //showUsers = user =><div key={user.Name}>{user.Name}</div>
+
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 23
+                    },
+                    __self: this
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'ul',
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 24
+                        },
+                        __self: this
+                    },
+                    this.state.users.map(function (user) {
+                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'h6',
+                            {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 26
+                                },
+                                __self: _this3
+                            },
+                            ' ',
+                            user.Name
+                        );
+                    })
+                )
+            );
+        }
+    }]);
+
+    return DbTest;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* unused harmony default export */ var _unused_webpack_default_export = (DbTest);
 
 /***/ })
 /******/ ]);

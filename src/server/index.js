@@ -9,13 +9,14 @@ import routes from "../shared/routes";
 import configureStore from "../shared/configureStore";
 import App from "../shared/App";
 import "source-map-support/register";
-
+//bodyParser = require('body-parser');
 const app = express();
+
 
 app.use(cors());
 app.use(express.static("public"));
 
-//var express = require('express');
+//db connection
 var mysql = require('mysql');
 
 var connection =mysql.createConnection({
@@ -33,24 +34,25 @@ connection.connect(function(error){
     
   }
 });
-
 app.use(function(req,res,next){
   req.connection=connection;
   next();
 });
 
-/*
-app.get('/about',function(req,res){
+app.get('/dbUser',function(req,res){
   connection.query("SELECT * FROM User",function(error,rows,feilds){
   if(!!error){
     console.log('Error query');
   }
   else{
     console.log('success query');
-    console.log(rows);
+    console.log(rows); 
+    res.send(rows);
   }
 })
-});*/
+})
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
 
 
 app.get("*", (req, res, next) => {
