@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-
+import {connect} from 'react-redux';
+import {userUpdate} from '../../actions/UserActions';
 export class DbTest extends Component {
-   constructor(props) {
+   /*
+    constructor(props) {
        super(props)
    
        this.state = {
             users:[],
        }
-   }
+   }*/
    
    componentDidMount(){
     fetch('http://localhost:3000/dbUser')
@@ -32,5 +34,10 @@ export class DbTest extends Component {
         )
     }
 }
+const mapDispatchToProps =dispatch=>({
+   
+    userUpdate: () =>dispatch(userUpdate()),
 
-export default DbTest
+});
+export default  connect (null,mapDispatchToProps)(DbTest)
+ 

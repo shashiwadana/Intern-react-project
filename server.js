@@ -10257,12 +10257,15 @@ var matchPath = function matchPath(pathname) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LOAD_DEALS_ERROR; });
 /* unused harmony export FILTER_DEALS_BY_PRICE */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return UPDATE_COUNT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return USER_DATA; });
 /* DEAL ACTIONS */
 var LOAD_DEALS_BEGINS = 'LOAD_DEALS_BEGINS';
 var LOAD_DEALS_COMPLATE = 'LOAD_DEALS_COMPLATE';
 var LOAD_DEALS_ERROR = 'LOAD_DEALS_ERROR';
 var FILTER_DEALS_BY_PRICE = 'FILTER_DEALS_BY_PRICE';
 var UPDATE_COUNT = 'UPDATE_COUNT';
+
+var USER_DATA = 'USER_DATA';
 
 /***/ }),
 /* 84 */
@@ -44263,13 +44266,16 @@ exports['default'] = thunk;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dealsReducer__ = __webpack_require__(366);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__countReducer__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__userReducer__ = __webpack_require__(535);
+
 
 
 
 
 var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({
 	dealsReducer: __WEBPACK_IMPORTED_MODULE_1__dealsReducer__["a" /* default */],
-	countR: __WEBPACK_IMPORTED_MODULE_2__countReducer__["a" /* default */]
+	countR: __WEBPACK_IMPORTED_MODULE_2__countReducer__["a" /* default */],
+	userR: __WEBPACK_IMPORTED_MODULE_3__userReducer__["a" /* default */]
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (allReducers);
@@ -61269,6 +61275,8 @@ PoolNamespace.prototype._getClusterNode = function _getClusterNode() {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DbTest; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_UserActions__ = __webpack_require__(534);
 var _jsxFileName = 'D:\\intern-redux project\\Intern-react-project\\src\\shared\\containers\\DbTest\\index.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -61281,22 +61289,28 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
 var DbTest = function (_Component) {
     _inherits(DbTest, _Component);
 
-    function DbTest(props) {
+    function DbTest() {
         _classCallCheck(this, DbTest);
 
-        var _this = _possibleConstructorReturn(this, (DbTest.__proto__ || Object.getPrototypeOf(DbTest)).call(this, props));
-
-        _this.state = {
-            users: []
-        };
-        return _this;
+        return _possibleConstructorReturn(this, (DbTest.__proto__ || Object.getPrototypeOf(DbTest)).apply(this, arguments));
     }
 
     _createClass(DbTest, [{
         key: 'componentDidMount',
+
+        /*
+         constructor(props) {
+            super(props)
+        
+            this.state = {
+                 users:[],
+            }
+        }*/
+
         value: function componentDidMount() {
             var _this2 = this;
 
@@ -61321,7 +61335,7 @@ var DbTest = function (_Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 23
+                        lineNumber: 25
                     },
                     __self: this
                 },
@@ -61330,7 +61344,7 @@ var DbTest = function (_Component) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 24
+                            lineNumber: 26
                         },
                         __self: this
                     },
@@ -61340,7 +61354,7 @@ var DbTest = function (_Component) {
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 26
+                                    lineNumber: 28
                                 },
                                 __self: _this3
                             },
@@ -61355,8 +61369,141 @@ var DbTest = function (_Component) {
 
     return DbTest;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
 
-/* unused harmony default export */ var _unused_webpack_default_export = (DbTest);
+        userUpdate: function userUpdate() {
+            return dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_UserActions__["a" /* userUpdate */])());
+        }
+
+    };
+};
+/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(null, mapDispatchToProps)(DbTest));
+
+/***/ }),
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */,
+/* 463 */,
+/* 464 */,
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */,
+/* 469 */,
+/* 470 */,
+/* 471 */,
+/* 472 */,
+/* 473 */,
+/* 474 */,
+/* 475 */,
+/* 476 */,
+/* 477 */,
+/* 478 */,
+/* 479 */,
+/* 480 */,
+/* 481 */,
+/* 482 */,
+/* 483 */,
+/* 484 */,
+/* 485 */,
+/* 486 */,
+/* 487 */,
+/* 488 */,
+/* 489 */,
+/* 490 */,
+/* 491 */,
+/* 492 */,
+/* 493 */,
+/* 494 */,
+/* 495 */,
+/* 496 */,
+/* 497 */,
+/* 498 */,
+/* 499 */,
+/* 500 */,
+/* 501 */,
+/* 502 */,
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */,
+/* 507 */,
+/* 508 */,
+/* 509 */,
+/* 510 */,
+/* 511 */,
+/* 512 */,
+/* 513 */,
+/* 514 */,
+/* 515 */,
+/* 516 */,
+/* 517 */,
+/* 518 */,
+/* 519 */,
+/* 520 */,
+/* 521 */,
+/* 522 */,
+/* 523 */,
+/* 524 */,
+/* 525 */,
+/* 526 */,
+/* 527 */,
+/* 528 */,
+/* 529 */,
+/* 530 */,
+/* 531 */,
+/* 532 */,
+/* 533 */,
+/* 534 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return userUpdate; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ActionType__ = __webpack_require__(83);
+
+
+var userUpdate = function userUpdate() {
+  return { type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["e" /* USER_DATA */] };
+};
+
+/***/ }),
+/* 535 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__ = __webpack_require__(83);
+
+
+var defaultUserState = {
+    Name: '',
+    Age: 10
+
+};
+var userReducer = function userReducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultUserState;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["e" /* USER_DATA */]:
+            {
+                console.log("update_user_begins", action);
+                var newState = {
+                    Name: "adassd"
+
+                };
+                return { Name: state.Name };
+            }
+        default:
+            return state;
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (userReducer);
 
 /***/ })
 /******/ ]);
