@@ -20682,7 +20682,8 @@ var configureStore = function configureStore(preloadedState) {
   return Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(__WEBPACK_IMPORTED_MODULE_2__reducers__["a" /* default */], preloadedState, Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_1_redux_thunk___default.a));
 };
 
-console.log(configureStore().getState());
+//console.log(configureStore().getState());
+
 
 /* harmony default export */ __webpack_exports__["a"] = (configureStore);
 
@@ -49778,20 +49779,16 @@ var DbTest = function (_Component) {
         key: 'render',
         value: function render() {
             var user = this.props.user;
-            console.log(Object(__WEBPACK_IMPORTED_MODULE_3__configureStore__["a" /* default */])().getState());
-            console.log("user ::");
+            // console.log(configureStore().getState());
+            console.log("user is ");
             console.log(user);
             // console.log(this.props.users);
-            /*
-            const userName=user.map((d,i)=>{
-              return <div>{d.Name}</div>
-            })
-            */
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'usersWrapper', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 29
+                        lineNumber: 25
                     },
                     __self: this
                 },
@@ -49800,7 +49797,7 @@ var DbTest = function (_Component) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 30
+                            lineNumber: 26
                         },
                         __self: this
                     },
@@ -49819,9 +49816,7 @@ var DbTest = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 var mapStateToProps = function mapStateToProps(state) {
     return {
-        user: state.usersR.users.users
-        //user:state
-
+        deal: state
     };
 };
 
@@ -53445,6 +53440,7 @@ var userReducer = function userReducer() {
     }
 
     console.log(state);
+
     return state;
 };
 

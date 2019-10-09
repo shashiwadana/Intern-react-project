@@ -5,7 +5,7 @@ import reducer from "./reducers";
 const configureStore = preloadedState =>
   createStore(reducer, preloadedState, applyMiddleware(thunk));
 
-  console.log(configureStore().getState());
+  //console.log(configureStore().getState());
 
 
 export default configureStore;

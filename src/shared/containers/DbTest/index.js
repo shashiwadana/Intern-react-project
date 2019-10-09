@@ -13,18 +13,14 @@ export class DbTest extends Component {
        return fetchUsers();
      
    }
- 
+  
     render() {
         const user = this.props.user;
-        console.log(configureStore().getState());
-        console.log("user ::");
+       // console.log(configureStore().getState());
+        console.log("user is ");
         console.log(user);
       // console.log(this.props.users);
-        /*
-      const userName=user.map((d,i)=>{
-          return <div>{d.Name}</div>
-      })
-      */
+       
         return (
             <div className="usersWrapper">
             <h6>users: </h6>
@@ -34,9 +30,7 @@ export class DbTest extends Component {
     }
 }
 const mapStateToProps = state => ({
-    user: state.usersR.users.users
-   //user:state
-    
+    deal: state
 });
 
 

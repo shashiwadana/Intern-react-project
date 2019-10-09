@@ -16,12 +16,13 @@ const userReducer = (state = defaultUserState , action) => {
             }
             state = {...state,users: newState }          
             break;
-         
+           
         } 
            
     }
    
     console.log(state);
+    
     return state;
    
 }
