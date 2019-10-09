@@ -30,7 +30,7 @@ export class DbTest extends Component {
     }
 }
 const mapStateToProps = state => ({
-    deal: state. usersR.users.users
+    user:state.usersR.users
 });
 
 

@@ -40,14 +40,14 @@ app.use(function(req,res,next){
 });
 
 app.get('/dbUser',function(req,res){
-  connection.query("SELECT * FROM User",function(error,rows,feilds){
+  connection.query("SELECT * FROM User",function(error,rows){
   if(!!error){
     console.log('Error query');
   }
   else{
     console.log('success query');
     console.log(rows); 
-    res.send(rows);
+    res.json(rows);
   }
 })
 })

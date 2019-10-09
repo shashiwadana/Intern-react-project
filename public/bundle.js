@@ -3778,7 +3778,10 @@ var createPath = exports.createPath = function createPath(location) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LOAD_DEALS_ERROR; });
 /* unused harmony export FILTER_DEALS_BY_PRICE */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return UPDATE_COUNT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return USER_DATA_BEGINS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return USER_DATA; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return USER_DATA_COMPLETE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return USER_DATA_ERROR; });
 /* DEAL ACTIONS */
 var LOAD_DEALS_BEGINS = 'LOAD_DEALS_BEGINS';
 var LOAD_DEALS_COMPLATE = 'LOAD_DEALS_COMPLATE';
@@ -3786,7 +3789,10 @@ var LOAD_DEALS_ERROR = 'LOAD_DEALS_ERROR';
 var FILTER_DEALS_BY_PRICE = 'FILTER_DEALS_BY_PRICE';
 var UPDATE_COUNT = 'UPDATE_COUNT';
 
+var USER_DATA_BEGINS = 'USER_DATA_BEGINS';
 var USER_DATA = 'USER_DATA';
+var USER_DATA_COMPLETE = 'USER_DATA_COMPLETE';
+var USER_DATA_ERROR = 'USER_DATA_ERROR';
 
 /***/ }),
 /* 31 */
@@ -28176,7 +28182,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 var defaultUserState = {
-    users: []
+    users: [],
+    loadingMsg: undefined,
+    errorMsg: undefined
 };
 
 var userReducer = function userReducer() {
@@ -28184,19 +28192,47 @@ var userReducer = function userReducer() {
     var action = arguments[1];
 
     switch (action.type) {
-        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["e" /* USER_DATA */]:
+
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["f" /* USER_DATA_BEGINS */]:
             {
                 console.log("update_user_begins", action, action.payload);
 
                 var newState = {
-                    users: [].concat(_toConsumableArray(state.users), _toConsumableArray(action.payload))
+                    users: [],
+                    loadingMsg: action.loadingMsg,
+                    errorMsg: ""
                 };
                 state = Object.assign({}, state, { users: newState });
                 break;
             }
 
-    }
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["e" /* USER_DATA */]:
+            {
+                console.log("update_user", action, action.payload);
 
+                var _newState = {
+                    users: [].concat(_toConsumableArray(state.users), _toConsumableArray(action.payload)),
+                    loadingMsg: action.loadingMsg,
+                    errorMsg: ""
+                };
+                state = Object.assign({}, state, { users: action.payload });
+                break;
+            }
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["h" /* USER_DATA_ERROR */]:
+            {
+                //console.log("update_user",action,action.payload);
+
+                var _newState2 = {
+                    users: [],
+                    loadingMsg: "",
+                    errorMsg: action.errorMsg
+                };
+                state = Object.assign({}, state, { users: _newState2 });
+                break;
+            }
+
+    }
+    console.log(__WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["g" /* USER_DATA_COMPLETE */], state);
     console.log(state);
 
     return state;
@@ -28839,7 +28875,7 @@ var DbTest = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 var mapStateToProps = function mapStateToProps(state) {
     return {
-        deal: state.usersR.users.users
+        user: state.usersR.users
     };
 };
 
@@ -28851,7 +28887,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = fetchUsers;
+/* unused harmony export userUpdateBegin */
 /* unused harmony export userUpdate */
+/* unused harmony export userUpdateError */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ActionType__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__);
@@ -28860,19 +28898,37 @@ var mapStateToProps = function mapStateToProps(state) {
 
 function fetchUsers() {
     return function (dispatch) {
+        dispatch(userUpdateBegin());
+        console.log('Users fetching');
 
         return __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default()("http://localhost:3000/dbUser").then(function (res) {
             return res.json();
         }).then(function (json) {
             dispatch(userUpdate(json));
+        }).catch(function (error) {
+            return dispatch(userUpdateError(error));
         });
     };
 }
+
+var userUpdateBegin = function userUpdateBegin() {
+    return {
+        type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["f" /* USER_DATA_BEGINS */],
+        payload: "Users are fetching"
+    };
+};
 
 var userUpdate = function userUpdate(users) {
     return {
         type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["e" /* USER_DATA */],
         payload: users
+    };
+};
+
+var userUpdateError = function userUpdateError(error) {
+    return {
+        type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["g" /* USER_DATA_COMPLETE */],
+        payload: error
     };
 };
 
