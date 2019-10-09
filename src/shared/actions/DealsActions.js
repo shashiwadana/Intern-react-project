@@ -1,3 +1,4 @@
+
 import * as actionType from './ActionType';
 import fetch from 'isomorphic-fetch';
 

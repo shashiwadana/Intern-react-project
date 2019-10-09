@@ -10,7 +10,7 @@ const dealsReducer = (state = defaultDealsState, action) => {
 	switch(action.type){
 		case actionType.LOAD_DEALS_BEGINS:
 		{
-			console.log("LOAD_DEALS_BEGINS ",action,  action.payload);
+			//console.log("LOAD_DEALS_BEGINS ",action,  action.payload);
 
 			let newState = {
 				deals: undefined, 
@@ -22,8 +22,8 @@ const dealsReducer = (state = defaultDealsState, action) => {
 		}
 		case actionType.LOAD_DEALS_COMPLATE:
 		{
-			console.log("LOAD_DEALS_COMPLATE " );
-			console.log("LOAD_DEALS_COMPLATE ",action.payload );
+			//console.log("LOAD_DEALS_COMPLATE " );
+			//console.log("LOAD_DEALS_COMPLATE ",action.payload );
 
 			let newState = {
 				deals: action.payload, 
@@ -33,7 +33,7 @@ const dealsReducer = (state = defaultDealsState, action) => {
 
 			state = {...state, deals : newState}
 
-			console.log(state);
+			//console.log(state);
 			break;
 		}
 		case actionType.LOAD_DEALS_ERROR:{
@@ -48,7 +48,7 @@ const dealsReducer = (state = defaultDealsState, action) => {
 		}
 	}
 
-	console.log(actionType.LOAD_DEALS_COMPLATE, state);
+	//console.log(actionType.LOAD_DEALS_COMPLATE, state);
 
 	return state;
 }

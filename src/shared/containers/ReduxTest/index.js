@@ -19,7 +19,7 @@ class ReduxTest extends Component {
         console.log(deal);
 
         const dealHtml = deal.map((d, i) => {
-            console.log(d,i);
+            //console.log(d,i);
             return  <div>{d.title}</div>
         });
 
