@@ -49816,7 +49816,7 @@ var DbTest = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 var mapStateToProps = function mapStateToProps(state) {
     return {
-        deal: state
+        deal: state.usersR.users.users
     };
 };
 
