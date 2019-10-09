@@ -2,10 +2,7 @@ import * as actionType from '../actions/ActionType';
 
 
 const defaultUserState = {
-   users: undefined,
-   errorMsg:"x"
-
-
+   users:[],
 }
 
 const userReducer = (state = defaultUserState , action) => {
@@ -13,17 +10,15 @@ const userReducer = (state = defaultUserState , action) => {
         case actionType.USER_DATA:
         {
             console.log("update_user_begins",action,action.payload);
-
-            let newState ={
-                users:action.payload,
-                errorMsg:""
-            }
-            state = {...state, users: newState }          
+            
+            state = {users: [...state.users, ...action.payload]  }          
             break;
            
-        }     
+          
+        } 
+           
     }
-    console.log('state is ');
+   
     console.log(state);
     return state;
 }
