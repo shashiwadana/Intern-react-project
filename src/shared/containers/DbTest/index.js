@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
-import {fetchUsers} from '../../actions/UserActions';
+import { fetchUsers } from '../../actions/UserActions';
 import configureStore from '../../configureStore';
 export class DbTest extends Component {
    
@@ -11,12 +11,12 @@ export class DbTest extends Component {
    //Fetch server side data
    static initialAction() {
        return fetchUsers();
-       
+     
    }
  
     render() {
         const user = this.props.user;
-        
+        console.log(configureStore().getState());
         console.log("user ::");
         console.log(user);
       // console.log(this.props.users);
@@ -39,7 +39,6 @@ const mapStateToProps = state => ({
     
 });
 
-console.log(configureStore().getState());
 
 
 export default  connect (mapStateToProps)(DbTest)

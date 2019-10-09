@@ -28187,7 +28187,10 @@ var userReducer = function userReducer() {
             {
                 console.log("update_user_begins", action, action.payload);
 
-                state = { users: [].concat(_toConsumableArray(state.users), _toConsumableArray(action.payload)) };
+                var newState = {
+                    users: [].concat(_toConsumableArray(state.users), _toConsumableArray(action.payload))
+                };
+                state = Object.assign({}, state, { users: newState });
                 break;
             }
 
@@ -28797,7 +28800,7 @@ var DbTest = function (_Component) {
         key: 'render',
         value: function render() {
             var user = this.props.user;
-
+            console.log(Object(__WEBPACK_IMPORTED_MODULE_3__configureStore__["a" /* default */])().getState());
             console.log("user ::");
             console.log(user);
             // console.log(this.props.users);
@@ -28843,8 +28846,6 @@ var mapStateToProps = function mapStateToProps(state) {
 
     };
 };
-
-console.log(Object(__WEBPACK_IMPORTED_MODULE_3__configureStore__["a" /* default */])().getState());
 
 /* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps)(DbTest));
 

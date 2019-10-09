@@ -11,16 +11,19 @@ const userReducer = (state = defaultUserState , action) => {
         {
             console.log("update_user_begins",action,action.payload);
             
-            state = {users: [...state.users, ...action.payload]  }          
+            let newState={
+                users: [...state.users, ...action.payload]
+            }
+            state = {...state,users: newState }          
             break;
-           
-          
+         
         } 
            
     }
    
     console.log(state);
     return state;
+   
 }
 
 export default userReducer;
