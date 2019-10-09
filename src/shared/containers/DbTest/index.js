@@ -35,5 +35,5 @@ const mapStateToProps = state => ({
 
 
 
-export default  connect (mapStateToProps)(DbTest)
+export default connect(mapStateToProps) (DbTest)
  
