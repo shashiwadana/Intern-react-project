@@ -1,6 +1,6 @@
 import * as actionType from './ActionType';
 import fetch from 'isomorphic-fetch';
-
+import configureStore from '../configureStore';
 export function fetchUsers(){
     return dispatch => {
        dispatch(userUpdateBegin());
@@ -14,6 +14,7 @@ export function fetchUsers(){
        })
        .catch(error=>dispatch(userUpdateError(error))); 
     };
+    console.log(configureStore().getState());
 }
 
 

@@ -4,7 +4,7 @@ import countReducer from './countReducer';
 import userReducer from './userReducer';
 
 const allReducers = combineReducers({
-	dealsReducer,
+	//dealsReducer,
 	countR:countReducer,
 	usersR:userReducer
 });

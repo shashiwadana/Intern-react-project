@@ -3,8 +3,8 @@ import * as actionType from '../actions/ActionType';
 
 const defaultUserState = {
    users:[],
-   loadingMsg: undefined,
-   errorMsg:undefined
+   loadingMsg: "y",
+   errorMsg:"y"
 }
 
 const userReducer = (state = defaultUserState , action) => {
@@ -16,7 +16,7 @@ const userReducer = (state = defaultUserState , action) => {
             
             let newState={
                 users: [],
-                loadingMsg:action.loadingMsg,
+                loadingMsg:"loading begins",
                 errorMsg:""
             }
             state = {...state,users: newState}          
@@ -29,11 +29,13 @@ const userReducer = (state = defaultUserState , action) => {
             console.log("update_user",action,action.payload);
             
             let newState={
-                users:[...state.users,...action.payload],
-                loadingMsg :action.loadingMsg,
+                users:action.payload,
+                loadingMsg :"LOADING",
                 errorMsg :""
             }
-            state = {...state,users: action.payload}          
+            
+            state = {...state,users:action.payload}           
+            
             break;
            
         } 
@@ -46,7 +48,9 @@ const userReducer = (state = defaultUserState , action) => {
                 loadingMsg :"",
                 errorMsg :action.errorMsg
             }
-            state = {...state,users: newState}          
+            state = {...state,users: newState}
+           
+          
             break;
            
         }
@@ -54,10 +58,11 @@ const userReducer = (state = defaultUserState , action) => {
         
            
     }
-    console.log(actionType.USER_DATA_COMPLETE, state);
-    console.log(state);
-    
+   // console.log(actionType.USER_DATA_COMPLETE, state);
+   console.log(state);
+         
     return state;
+    
    
 }
 

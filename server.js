@@ -20683,7 +20683,7 @@ __webpack_require__(5).inherits(FetchError, Error);
 
 
 
-
+//import allReducers from '../shared/reducers/index';
 var configureStore = function configureStore(preloadedState) {
   return Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(__WEBPACK_IMPORTED_MODULE_2__reducers__["a" /* default */], preloadedState, Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_1_redux_thunk___default.a));
 };
@@ -49784,17 +49784,18 @@ var DbTest = function (_Component) {
     _createClass(DbTest, [{
         key: 'render',
         value: function render() {
+
             var user = this.props.user;
-            // console.log(configureStore().getState());
+            //console.log(configureStore().getState());
             console.log("user is ");
-            console.log(user);
-            // console.log(this.props.users);
+            // console.log(user);
+            console.log(this.props.user);
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'usersWrapper', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 25
+                        lineNumber: 27
                     },
                     __self: this
                 },
@@ -49803,7 +49804,7 @@ var DbTest = function (_Component) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 26
+                            lineNumber: 28
                         },
                         __self: this
                     },
@@ -49840,6 +49841,7 @@ var mapStateToProps = function mapStateToProps(state) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ActionType__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(398);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__configureStore__ = __webpack_require__(173);
 
 
 
@@ -49856,6 +49858,7 @@ function fetchUsers() {
             return dispatch(userUpdateError(error));
         });
     };
+    console.log(Object(__WEBPACK_IMPORTED_MODULE_2__configureStore__["a" /* default */])().getState());
 }
 
 var userUpdateBegin = function userUpdateBegin() {
@@ -53327,7 +53330,7 @@ exports['default'] = thunk;
 
 
 var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({
-	dealsReducer: __WEBPACK_IMPORTED_MODULE_1__dealsReducer__["a" /* default */],
+	//dealsReducer,
 	countR: __WEBPACK_IMPORTED_MODULE_2__countReducer__["a" /* default */],
 	usersR: __WEBPACK_IMPORTED_MODULE_3__userReducer__["a" /* default */]
 });
@@ -53396,7 +53399,7 @@ var dealsReducer = function dealsReducer() {
 	return state;
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (dealsReducer);
+/* unused harmony default export */ var _unused_webpack_default_export = (dealsReducer);
 
 /***/ }),
 /* 430 */
@@ -53439,14 +53442,12 @@ var countReducer = function countReducer() {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__ = __webpack_require__(47);
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 
 
 var defaultUserState = {
     users: [],
-    loadingMsg: undefined,
-    errorMsg: undefined
+    loadingMsg: "y",
+    errorMsg: "y"
 };
 
 var userReducer = function userReducer() {
@@ -53461,7 +53462,7 @@ var userReducer = function userReducer() {
 
                 var newState = {
                     users: [],
-                    loadingMsg: action.loadingMsg,
+                    loadingMsg: "loading begins",
                     errorMsg: ""
                 };
                 state = Object.assign({}, state, { users: newState });
@@ -53473,11 +53474,13 @@ var userReducer = function userReducer() {
                 console.log("update_user", action, action.payload);
 
                 var _newState = {
-                    users: [].concat(_toConsumableArray(state.users), _toConsumableArray(action.payload)),
-                    loadingMsg: action.loadingMsg,
+                    users: action.payload,
+                    loadingMsg: "LOADING",
                     errorMsg: ""
                 };
+
                 state = Object.assign({}, state, { users: action.payload });
+
                 break;
             }
         case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["h" /* USER_DATA_ERROR */]:
@@ -53490,11 +53493,12 @@ var userReducer = function userReducer() {
                     errorMsg: action.errorMsg
                 };
                 state = Object.assign({}, state, { users: _newState2 });
+
                 break;
             }
 
     }
-    console.log(__WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["g" /* USER_DATA_COMPLETE */], state);
+    // console.log(actionType.USER_DATA_COMPLETE, state);
     console.log(state);
 
     return state;

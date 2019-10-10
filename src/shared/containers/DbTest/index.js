@@ -11,15 +11,17 @@ export class DbTest extends Component {
    //Fetch server side data
    static initialAction() {
        return fetchUsers();
-     
+       
    }
   
     render() {
+        
+     
         const user = this.props.user;
-       // console.log(configureStore().getState());
+        //console.log(configureStore().getState());
         console.log("user is ");
-        console.log(user);
-      // console.log(this.props.users);
+       // console.log(user);
+       console.log(this.props.user);
        
         return (
             <div className="usersWrapper">
