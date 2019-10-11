@@ -16,10 +16,10 @@ const userReducer = (state = defaultUserState , action) => {
             
             let newState={
                 users: [],
-                loadingMsg:"loading begins",
+                loadingMsg:action.loadingMsg,
                 errorMsg:""
             }
-            state = {...state,users: newState}          
+            state = {...state, users: newState}          
             break;
            
         } 
@@ -29,12 +29,13 @@ const userReducer = (state = defaultUserState , action) => {
             console.log("update_user",action,action.payload);
             
             let newState={
-                users:action.payload,
-                loadingMsg :"LOADING",
+                users:[...state.users, ...action.payload],
+                loadingMsg :action.loadingMsg,
                 errorMsg :""
             }
             
-            state = {...state,users:action.payload}           
+            
+            state = {...state, users : newState}           
             
             break;
            
@@ -44,19 +45,15 @@ const userReducer = (state = defaultUserState , action) => {
             //console.log("update_user",action,action.payload);
             
             let newState={
-                users:[],
+                users:undefined,
                 loadingMsg :"",
                 errorMsg :action.errorMsg
             }
             state = {...state,users: newState}
-           
-          
             break;
            
         }
-
-        
-           
+     
     }
    // console.log(actionType.USER_DATA_COMPLETE, state);
    console.log(state);

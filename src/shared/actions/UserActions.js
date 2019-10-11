@@ -1,7 +1,8 @@
 import * as actionType from './ActionType';
 import fetch from 'isomorphic-fetch';
-import configureStore from '../configureStore';
-export function fetchUsers(){
+//import configureStore from '../configureStore';
+
+export function fetchUsers() {
     return dispatch => {
        dispatch(userUpdateBegin());
        console.log('Users fetching');
@@ -10,12 +11,15 @@ export function fetchUsers(){
        .then(res => res.json())
        .then(json => {
             dispatch(userUpdate(json));
+          // console.log(configureStore().getState());
           
        })
-       .catch(error=>dispatch(userUpdateError(error))); 
+       .catch(error => dispatch(userUpdateError(error))); 
+       
     };
-    console.log(configureStore().getState());
+   
 }
+
 
 
 export const userUpdateBegin = () =>({

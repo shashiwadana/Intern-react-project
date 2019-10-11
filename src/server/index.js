@@ -48,9 +48,13 @@ app.get('/dbUser',function(req,res){
     console.log('success query');
     console.log(rows); 
     res.json(rows);
+    //res.send(rows);
   }
 })
 })
+
+
+
 //app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(bodyParser.json());
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ChildA from "../../containers/ChildA";
-import ChildB from "../../containers/ChildB";
+import ChildA from "../../components/ChildA";
+import ChildB from "../../components/ChildB";
 
  class ParentComponent extends Component {
      

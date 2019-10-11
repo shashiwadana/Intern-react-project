@@ -1,5 +1,5 @@
 import * as actionType from './ActionType';
-
+import fetch from 'isomorphic-fetch';
 
 //Api Call And Fetch Data
 export function fetchDeals() {
