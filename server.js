@@ -20488,9 +20488,6 @@ Link.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__containers_About__ = __webpack_require__(392);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__containers_ParentComponent__ = __webpack_require__(394);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__containers_DbTest__ = __webpack_require__(398);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__containers_DataCheck_DataCheck__ = __webpack_require__(433);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__containers_DataCheck_DataCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__containers_DataCheck_DataCheck__);
-
 
 
 
@@ -20512,10 +20509,6 @@ var routes = [{
   path: "/db",
   exact: false,
   component: __WEBPACK_IMPORTED_MODULE_3__containers_DbTest__["a" /* default */]
-}, {
-  path: '/data',
-  exact: false,
-  component: __WEBPACK_IMPORTED_MODULE_4__containers_DataCheck_DataCheck__["default"]
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (routes);
@@ -53531,13 +53524,7 @@ var userReducer = function userReducer() {
 
 /***/ }),
 /* 432 */,
-/* 433 */
-/***/ (function(module, __webpack_exports__) {
-
-"use strict";
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'D:\\intern-redux project\\Intern-react-project\\src\\shared\\containers\\DataCheck\\DataCheck.js'");
-
-/***/ }),
+/* 433 */,
 /* 434 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
