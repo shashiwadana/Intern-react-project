@@ -6,7 +6,7 @@ export class DataCheck extends Component {
         super(props)
     
         this.state = {
-            skill: "",
+           
             skillId: "",
             skillList : []
         }
@@ -32,12 +32,12 @@ fetch("http://localhost:3001/dataservices/getallskills")
     
       handleSkillChange(skill) {
         this.setState({
-          skill: skill,
-          skillId: skill.value
+         
+          skillId: skill.target.value
         });
       }
       handleSubmit(event) {
-        alert('A skill was submitted: ' + this.state.skill);
+        alert('A skill was submitted: ' + this.state.skillId);
         event.preventDefault();
       }
     render() {
@@ -51,7 +51,7 @@ fetch("http://localhost:3001/dataservices/getallskills")
                     placeholder="Skills"
                     >
                 {this.state.skillList.map((optionSkill) => (
-                <option value={optionSkill.value}>{optionSkill.label}</option>
+                <option key={optionSkill.value}>{optionSkill.label}</option>
                 ))}
                 </select>
                 

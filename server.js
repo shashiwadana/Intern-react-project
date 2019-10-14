@@ -50284,7 +50284,7 @@ var DataCheck = function (_Component) {
         var _this = _possibleConstructorReturn(this, (DataCheck.__proto__ || Object.getPrototypeOf(DataCheck)).call(this, props));
 
         _this.state = {
-            skill: "",
+
             skillId: "",
             skillList: []
         };
@@ -50318,14 +50318,14 @@ var DataCheck = function (_Component) {
         key: "handleSkillChange",
         value: function handleSkillChange(skill) {
             this.setState({
-                skill: skill,
-                skillId: skill.value
+
+                skillId: skill.target.value
             });
         }
     }, {
         key: "handleSubmit",
         value: function handleSubmit(event) {
-            alert('A skill was submitted: ' + this.state.skill);
+            alert('A skill was submitted: ' + this.state.skillId);
             event.preventDefault();
         }
     }, {
@@ -50365,7 +50365,7 @@ var DataCheck = function (_Component) {
                         this.state.skillList.map(function (optionSkill) {
                             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 "option",
-                                { value: optionSkill.value, __source: {
+                                { key: optionSkill.value, __source: {
                                         fileName: _jsxFileName,
                                         lineNumber: 54
                                     },
