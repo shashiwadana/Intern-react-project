@@ -21167,11 +21167,18 @@ var Footer = function (_React$Component) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return LOAD_DEALS_COMPLATE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LOAD_DEALS_ERROR; });
 /* unused harmony export FILTER_DEALS_BY_PRICE */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return LOAD_WORKERS_BEGINS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return LOAD_WORKERS_COMPLETE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return LOAD_WORKERS_ERROR; });
 /* DEAL ACTIONS */
 var LOAD_DEALS_BEGINS = 'LOAD_DEALS_BEGINS';
 var LOAD_DEALS_COMPLATE = 'LOAD_DEALS_COMPLATE';
 var LOAD_DEALS_ERROR = 'LOAD_DEALS_ERROR';
 var FILTER_DEALS_BY_PRICE = 'FILTER_DEALS_BY_PRICE';
+
+var LOAD_WORKERS_BEGINS = "LOAD_WORKERS_BEGINS";
+var LOAD_WORKERS_COMPLETE = "LOAD_WORKERS_COMPLETE";
+var LOAD_WORKERS_ERROR = "LOAD_WORKERS_ERROR";
 
 /***/ }),
 /* 173 */
@@ -50263,7 +50270,9 @@ Request.prototype.clone = function() {
 /* unused harmony export DataCheck */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _jsxFileName = "D:\\findYourWorker redux version\\Intern-react-project\\src\\shared\\containers\\DataCheck\\DataCheck.js";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_WorkerActions__ = __webpack_require__(490);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(155);
+var _jsxFileName = 'D:\\findYourWorker redux version\\Intern-react-project\\src\\shared\\containers\\DataCheck\\DataCheck.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -50274,6 +50283,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
+
+
 //let skillList = [];
 var DataCheck = function (_Component) {
     _inherits(DataCheck, _Component);
@@ -50281,115 +50292,72 @@ var DataCheck = function (_Component) {
     function DataCheck(props) {
         _classCallCheck(this, DataCheck);
 
-        var _this = _possibleConstructorReturn(this, (DataCheck.__proto__ || Object.getPrototypeOf(DataCheck)).call(this, props));
-
-        _this.state = {
-
-            skillId: "",
-            skillList: []
-        };
-        _this.handleSkillChange = _this.handleSkillChange.bind(_this);
-        _this.handleSubmit = _this.handleSubmit.bind(_this);
-        return _this;
+        return _possibleConstructorReturn(this, (DataCheck.__proto__ || Object.getPrototypeOf(DataCheck)).call(this, props));
     }
 
     _createClass(DataCheck, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
+        key: 'render',
+        value: function render() {
             var _this2 = this;
 
-            // worker skill selection
+            var worker = this.props.worker.workers.workers;
+            console.log(worker);
 
-
-            fetch("http://localhost:3001/dataservices/getallskills").then(function (res) {
-                return res.json();
-            }).then(function (res) {
-                _this2.setState({
-                    skillList: res.recordsets[0].map(function (recordSet) {
-                        return {
-                            label: recordSet.SkillTitle,
-                            value: recordSet.SkillId
-                        };
-                    })
-                });
+            var workerHtml = worker.map(function (w, i) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 23
+                        },
+                        __self: _this2
+                    },
+                    w.SkillTitle
+                );
             });
-        }
-    }, {
-        key: "handleSkillChange",
-        value: function handleSkillChange(skill) {
-            this.setState({
-
-                skillId: skill.target.value
-            });
-        }
-    }, {
-        key: "handleSubmit",
-        value: function handleSubmit(event) {
-            alert('A skill was submitted: ' + this.state.skillId);
-            event.preventDefault();
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _this3 = this;
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
+                'div',
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 45
+                        lineNumber: 27
                     },
                     __self: this
                 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "form",
-                    { onSubmit: this.handleSubmit, __source: {
+                    'h6',
+                    {
+                        __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 47
+                            lineNumber: 28
                         },
                         __self: this
                     },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        "select",
-                        {
-                            value: this.state.skill,
-                            onChange: this.handleSkillChange,
-                            placeholder: "Skills",
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 48
-                            },
-                            __self: this
-                        },
-                        this.state.skillList.map(function (optionSkill) {
-                            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                "option",
-                                { key: optionSkill.value, __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 54
-                                    },
-                                    __self: _this3
-                                },
-                                optionSkill.label
-                            );
-                        })
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "submit", value: "Submit", __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 58
-                        },
-                        __self: this
-                    })
+                    'workers: ',
+                    workerHtml
                 )
             );
+        }
+    }], [{
+        key: 'initialAction',
+        value: function initialAction() {
+            return Object(__WEBPACK_IMPORTED_MODULE_1__actions_WorkerActions__["a" /* fetchWorkers */])();
         }
     }]);
 
     return DataCheck;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+var mapStateToProps = function mapStateToProps(state) {
+    return {
 
-/* harmony default export */ __webpack_exports__["a"] = (DataCheck);
+        worker: state.workerR
+
+    };
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(mapStateToProps)(DataCheck));
 
 /***/ }),
 /* 417 */
@@ -50446,11 +50414,13 @@ exports['default'] = thunk;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dealsReducer__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__WorkerReducer__ = __webpack_require__(491);
 
 
 
 var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({
-	dealsReducer: __WEBPACK_IMPORTED_MODULE_1__dealsReducer__["a" /* default */]
+	dealsReducer: __WEBPACK_IMPORTED_MODULE_1__dealsReducer__["a" /* default */],
+	workerR: __WEBPACK_IMPORTED_MODULE_2__WorkerReducer__["a" /* default */]
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (allReducers);
@@ -62046,6 +62016,118 @@ exports.SourceNode = SourceNode;
 /***/ (function(module, exports) {
 
 module.exports = require("module");
+
+/***/ }),
+/* 490 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = fetchWorkers;
+/* unused harmony export loadWorkersBegin */
+/* unused harmony export loadWorkers */
+/* unused harmony export loadWorkersError */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ActionType__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(389);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__);
+
+
+
+function fetchWorkers() {
+  return function (dispatch) {
+    dispatch(loadWorkersBegin());
+    console.log('workers are fetching');
+
+    return __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default()("http://localhost:3001/dataservices/getallskills").then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      dispatch(loadWorkers(res));
+    }).catch(function (error) {
+      return dispatch(loadWorkersError(error));
+    });
+  };
+}
+
+var loadWorkersBegin = function loadWorkersBegin() {
+  return {
+    type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["d" /* LOAD_WORKERS_BEGINS */],
+    payload: "Workers are fetching....."
+  };
+};
+
+var loadWorkers = function loadWorkers(workers) {
+  return {
+    type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["e" /* LOAD_WORKERS_COMPLETE */],
+    payload: workers.recordsets[0]
+  };
+};
+
+var loadWorkersError = function loadWorkersError(error) {
+  return {
+    type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["f" /* LOAD_WORKERS_ERROR */],
+    payload: error
+  };
+};
+
+/***/ }),
+/* 491 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_fs__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_fs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_fs__);
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+
+
+
+var defaultWorkerState = {
+    workers: [],
+    loadingMsg: undefined,
+    errorMsg: undefined
+};
+
+var workerReducer = function workerReducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultWorkerState;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["d" /* LOAD_WORKERS_BEGINS */]:
+            {
+                var newState = {
+                    workers: [],
+                    loadingMsg: action.loadingMsg,
+                    errorMsg: ""
+                };
+                state = Object.assign({}, state, { workers: newState });
+                break;
+            }
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["e" /* LOAD_WORKERS_COMPLETE */]:
+            {
+                console.log("update_worker", action, action.payload);
+                var _newState = {
+                    workers: [].concat(_toConsumableArray(state.workers), _toConsumableArray(action.payload)),
+                    loadingMsg: action.loadingMsg,
+                    errorMsg: ""
+                };
+                state = Object.assign({}, state, { workers: _newState });
+                break;
+            }
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["f" /* LOAD_WORKERS_ERROR */]:
+            {
+                var _newState2 = {
+                    workers: [],
+                    loadingMsg: "",
+                    errorMsg: action.errorMsg
+                };
+                state = Object.assign({}, state, { workers: _newState2 });
+                break;
+            }
+    }
+    console.log(state);
+    return state;
+};
+/* harmony default export */ __webpack_exports__["a"] = (workerReducer);
 
 /***/ })
 /******/ ]);

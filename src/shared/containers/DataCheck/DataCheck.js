@@ -1,65 +1,41 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {fetchWorkers} from '../../actions/WorkerActions';
+import { connect } from 'react-redux';
 //let skillList = [];
 export class DataCheck extends Component {
    
     constructor(props) {
         super(props)
     
-        this.state = {
-           
-            skillId: "",
-            skillList : []
-        }
-       this. handleSkillChange=this. handleSkillChange.bind(this);
-       this.handleSubmit = this.handleSubmit.bind(this); 
     }
-    componentDidMount() {
-        // worker skill selection
-    
+
+    static initialAction() {
+        return fetchWorkers();
         
-fetch("http://localhost:3001/dataservices/getallskills")
-.then (res=>res.json())
-.then(res => {
-   this.setState({
-     skillList: res.recordsets[0].map((recordSet) => ({
-       label: recordSet.SkillTitle,
-       value: recordSet.SkillId,
-     }))
-   });       
-});
-          
-      }
-    
-      handleSkillChange(skill) {
-        this.setState({
-         
-          skillId: skill.target.value
-        });
-      }
-      handleSubmit(event) {
-        alert('A skill was submitted: ' + this.state.skillId);
-        event.preventDefault();
-      }
+    }
+
+      
     render() {
+        const worker =this.props.worker.workers.workers;
+        console.log(worker);
+        
+        const workerHtml = worker.map((w,i)=>{
+            return <div>{w.SkillTitle}</div>
+        })
+    
         return (
             <div>
-               
-                 <form onSubmit={this.handleSubmit}>
-                 <select
-                    value={this.state.skill}
-                    onChange={this.handleSkillChange}
-                    placeholder="Skills"
-                    >
-                {this.state.skillList.map((optionSkill) => (
-                <option key={optionSkill.value}>{optionSkill.label}</option>
-                ))}
-                </select>
-                
-                    <input type="submit" value="Submit" />
-                 </form>
+               <h6>workers: {workerHtml}</h6> 
+                 
             </div>
         )
     }
 }
+const mapStateToProps = state => ({
+   
+    worker: state.workerR
+  
+});
 
-export default DataCheck
+
+export default  connect(mapStateToProps)(DataCheck);
