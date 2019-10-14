@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-let skillList = [];
+//let skillList = [];
 export class DataCheck extends Component {
    
     constructor(props) {
@@ -8,6 +8,7 @@ export class DataCheck extends Component {
         this.state = {
             skill: "",
             skillId: "",
+            skillList : []
         }
        this. handleSkillChange=this. handleSkillChange.bind(this);
        this.handleSubmit = this.handleSubmit.bind(this); 
@@ -15,22 +16,18 @@ export class DataCheck extends Component {
     componentDidMount() {
         // worker skill selection
     
-        fetch("http://localhost:3001/dataservices/getallskills")
-        .then (res=>res.json())
-          .then(res => {
-              console.log(res);
-            let temArray = {};
-            for (let i = 0; i < res.recordsets[0].length; i++) {
-              temArray["value"] = res.recordsets[0][i].SkillId;
-              temArray["label"] = res.recordsets[0][i].SkillTitle;
-              skillList.push(temArray);
-              console.log(skillList);
-              temArray = {};
-            }
-          })
-          .catch(function(error) {
-             console.log(error);
-          });
+        
+fetch("http://localhost:3001/dataservices/getallskills")
+.then (res=>res.json())
+.then(res => {
+   this.setState({
+     skillList: res.recordsets[0].map((recordSet) => ({
+       label: recordSet.SkillTitle,
+       value: recordSet.SkillId,
+     }))
+   });       
+});
+          
       }
     
       handleSkillChange(skill) {
@@ -46,14 +43,18 @@ export class DataCheck extends Component {
     render() {
         return (
             <div>
-                <h6>skills :{skillList}</h6>
+               
                  <form onSubmit={this.handleSubmit}>
                  <select
-                      value={this.state.skill}
-                      onChange={this.handleSkillChange}
-                      options={skillList}
-                      placeholder="Skills"
-                    />
+                    value={this.state.skill}
+                    onChange={this.handleSkillChange}
+                    placeholder="Skills"
+                    >
+                {this.state.skillList.map((optionSkill) => (
+                <option value={optionSkill.value}>{optionSkill.label}</option>
+                ))}
+                </select>
+                
                     <input type="submit" value="Submit" />
                  </form>
             </div>

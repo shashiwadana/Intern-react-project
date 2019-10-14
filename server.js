@@ -50274,7 +50274,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
-var skillList = [];
+//let skillList = [];
 var DataCheck = function (_Component) {
     _inherits(DataCheck, _Component);
 
@@ -50285,7 +50285,8 @@ var DataCheck = function (_Component) {
 
         _this.state = {
             skill: "",
-            skillId: ""
+            skillId: "",
+            skillList: []
         };
         _this.handleSkillChange = _this.handleSkillChange.bind(_this);
         _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -50295,22 +50296,22 @@ var DataCheck = function (_Component) {
     _createClass(DataCheck, [{
         key: "componentDidMount",
         value: function componentDidMount() {
+            var _this2 = this;
+
             // worker skill selection
+
 
             fetch("http://localhost:3001/dataservices/getallskills").then(function (res) {
                 return res.json();
             }).then(function (res) {
-                console.log(res);
-                var temArray = {};
-                for (var i = 0; i < res.recordsets[0].length; i++) {
-                    temArray["value"] = res.recordsets[0][i].SkillId;
-                    temArray["label"] = res.recordsets[0][i].SkillTitle;
-                    skillList.push(temArray);
-                    console.log(skillList);
-                    temArray = {};
-                }
-            }).catch(function (error) {
-                console.log(error);
+                _this2.setState({
+                    skillList: res.recordsets[0].map(function (recordSet) {
+                        return {
+                            label: recordSet.SkillTitle,
+                            value: recordSet.SkillId
+                        };
+                    })
+                });
             });
         }
     }, {
@@ -50330,49 +50331,53 @@ var DataCheck = function (_Component) {
     }, {
         key: "render",
         value: function render() {
+            var _this3 = this;
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 48
+                        lineNumber: 45
                     },
                     __self: this
                 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "h6",
-                    {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 49
-                        },
-                        __self: this
-                    },
-                    "skills :",
-                    skillList
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "form",
                     { onSubmit: this.handleSubmit, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 50
+                            lineNumber: 47
                         },
                         __self: this
                     },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("select", {
-                        value: this.state.skill,
-                        onChange: this.handleSkillChange,
-                        options: skillList,
-                        placeholder: "Skills",
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 51
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "select",
+                        {
+                            value: this.state.skill,
+                            onChange: this.handleSkillChange,
+                            placeholder: "Skills",
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 48
+                            },
+                            __self: this
                         },
-                        __self: this
-                    }),
+                        this.state.skillList.map(function (optionSkill) {
+                            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                "option",
+                                { value: optionSkill.value, __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 54
+                                    },
+                                    __self: _this3
+                                },
+                                optionSkill.label
+                            );
+                        })
+                    ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "submit", value: "Submit", __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 57
+                            lineNumber: 58
                         },
                         __self: this
                     })
