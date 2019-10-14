@@ -50288,6 +50288,7 @@ var DataCheck = function (_Component) {
             skillId: ""
         };
         _this.handleSkillChange = _this.handleSkillChange.bind(_this);
+        _this.handleSubmit = _this.handleSubmit.bind(_this);
         return _this;
     }
 
@@ -50301,9 +50302,9 @@ var DataCheck = function (_Component) {
             }).then(function (res) {
                 console.log(res);
                 var temArray = {};
-                for (var i = 0; i < res.data.recordsets[0].length; i++) {
-                    temArray["value"] = res.data.recordsets[0][i].SkillId;
-                    temArray["label"] = res.data.recordsets[0][i].SkillTitle;
+                for (var i = 0; i < res.recordsets[0].length; i++) {
+                    temArray["value"] = res.recordsets[0][i].SkillId;
+                    temArray["label"] = res.recordsets[0][i].SkillTitle;
                     skillList.push(temArray);
                     console.log(skillList);
                     temArray = {};
@@ -50321,6 +50322,12 @@ var DataCheck = function (_Component) {
             });
         }
     }, {
+        key: "handleSubmit",
+        value: function handleSubmit(event) {
+            alert('A skill was submitted: ' + this.state.skill);
+            event.preventDefault();
+        }
+    }, {
         key: "render",
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -50328,21 +50335,48 @@ var DataCheck = function (_Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 43
+                        lineNumber: 48
                     },
                     __self: this
                 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("select", {
-                    value: this.state.skill,
-                    onChange: this.handleSkillChange,
-                    options: skillList,
-                    placeholder: "Skills",
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 44
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "h6",
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 49
+                        },
+                        __self: this
                     },
-                    __self: this
-                })
+                    "skills :",
+                    skillList
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "form",
+                    { onSubmit: this.handleSubmit, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 50
+                        },
+                        __self: this
+                    },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("select", {
+                        value: this.state.skill,
+                        onChange: this.handleSkillChange,
+                        options: skillList,
+                        placeholder: "Skills",
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 51
+                        },
+                        __self: this
+                    }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "submit", value: "Submit", __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 57
+                        },
+                        __self: this
+                    })
+                )
             );
         }
     }]);

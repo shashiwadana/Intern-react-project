@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'C:/Users/shashiwadana_n/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react'
 let skillList = [];
 export class DataCheck extends Component {
    
@@ -9,8 +9,7 @@ export class DataCheck extends Component {
             skill: "",
             skillId: "",
         }
-       this. handleSkillChange=this. handleSkillChange.bind(this);
-       this.handleSubmit = this.handleSubmit.bind(this); 
+       this. handleSkillChange=this. handleSkillChange.bind(this); 
     }
     componentDidMount() {
         // worker skill selection
@@ -39,23 +38,15 @@ export class DataCheck extends Component {
           skillId: skill.value
         });
       }
-      handleSubmit(event) {
-        alert('A skill was submitted: ' + this.state.skill);
-        event.preventDefault();
-      }
     render() {
         return (
             <div>
-                <h6>skills :{skillList}</h6>
-                 <form onSubmit={this.handleSubmit}>
-                 <select
+                <select
                       value={this.state.skill}
                       onChange={this.handleSkillChange}
-                      options={skillList}
+                     options={skillList}
                       placeholder="Skills"
-                    />
-                    <input type="submit" value="Submit" />
-                 </form>
+                    /> 
             </div>
         )
     }
