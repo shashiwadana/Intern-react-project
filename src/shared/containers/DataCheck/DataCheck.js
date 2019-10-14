@@ -1,41 +1,60 @@
 import React, { Component } from 'react';
 import {fetchWorkers} from '../../actions/WorkerActions';
 import { connect } from 'react-redux';
-//let skillList = [];
+import loadJob from '../../actions/jobTypeActions';
+
 export class DataCheck extends Component {
    
     constructor(props) {
         super(props)
-    
+  
+        this.state ={
+            skill:''
+        }
+        this. handleSkillChange=this. handleSkillChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this); 
     }
 
     static initialAction() {
         return fetchWorkers();
         
     }
-
+    handleSkillChange(skill){
+       return this.props.workerUpdate(skill.target.value);
+    }
+    handleSubmit(event) {
+        alert('A skill was submitted: ' + this.props.job);
+        event.preventDefault();
+      }
       
     render() {
         const worker =this.props.worker.workers.workers;
         console.log(worker);
         
-        const workerHtml = worker.map((w,i)=>{
-            return <div>{w.SkillTitle}</div>
-        })
     
         return (
             <div>
-               <h6>workers: {workerHtml}</h6> 
-                 
+                
+                <select
+                value={this.state.skill}
+                onChange={this.handleSkillChange}
+                >
+                {worker.map((optionSkill)=>(<option key={optionSkill.SkillId} value={optionSkill.SkillId}>{optionSkill.SkillTitle}</option>))}
+                </select> 
             </div>
         )
     }
 }
 const mapStateToProps = state => ({
    
-    worker: state.workerR
+    worker: state.workerR,
+    job:state.jobR.job
   
 });
+const mapDispatchToProps =dispatch=>({
+   
+    workerUpdate: () =>dispatch(loadJob())
 
+});
 
-export default  connect(mapStateToProps)(DataCheck);
+export default  connect(mapStateToProps,mapDispatchToProps)(DataCheck);

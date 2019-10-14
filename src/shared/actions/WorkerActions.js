@@ -29,3 +29,4 @@ export const loadWorkersError = (error) => ({
 	type : actionType.LOAD_WORKERS_ERROR,
 	payload : error
 });
+
