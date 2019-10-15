@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'C:/Users/shashiwadana_n/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react'
 //let skillList = [];
 export class DataCheck extends Component {
    

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {fetchWorkers} from '../../actions/WorkerActions';
 import { connect } from 'react-redux';
-import loadJob from '../../actions/jobTypeActions';
+import {sendJob} from '../../actions/jobTypeActions';
 
 export class DataCheck extends Component {
    
@@ -9,7 +9,8 @@ export class DataCheck extends Component {
         super(props)
   
         this.state ={
-            skill:''
+            skill:'',
+            skillId:''
         }
         this. handleSkillChange=this. handleSkillChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this); 
@@ -19,28 +20,38 @@ export class DataCheck extends Component {
         return fetchWorkers();
         
     }
+
     handleSkillChange(skill){
-       return this.props.workerUpdate(skill.target.value);
+        this.setState({
+         
+            skillId: skill.target.value
+          });
     }
+    
     handleSubmit(event) {
-        alert('A skill was submitted: ' + this.props.job);
+        alert('A skill was submitted: ' + this.state.skillId);
         event.preventDefault();
       }
       
     render() {
         const worker =this.props.worker.workers.workers;
         console.log(worker);
-        
+        console.log(this.state.skillId);
     
         return (
             <div>
-                
+                <form onSubmit={this.handleSubmit}>
+                    
                 <select
                 value={this.state.skill}
                 onChange={this.handleSkillChange}
                 >
                 {worker.map((optionSkill)=>(<option key={optionSkill.SkillId} value={optionSkill.SkillId}>{optionSkill.SkillTitle}</option>))}
                 </select> 
+                <input type="submit" value="Submit" />
+                </form>
+
+               
             </div>
         )
     }
@@ -48,13 +59,15 @@ export class DataCheck extends Component {
 const mapStateToProps = state => ({
    
     worker: state.workerR,
-    job:state.jobR.job
+    //job:state.jobR.job
   
 });
+/*
 const mapDispatchToProps =dispatch=>({
    
-    workerUpdate: () =>dispatch(loadJob())
+    workerUpdate: (skill) =>dispatch(loadJob(skill))
 
 });
+*/
 
-export default  connect(mapStateToProps,mapDispatchToProps)(DataCheck);
+export default  connect(mapStateToProps)(DataCheck);

@@ -2,7 +2,8 @@ import Home from "./containers/Home";
 import About from "./containers/About";
 import ParentComponent from "./containers/ParentComponent"
 import ReduxTest from "./containers/ReduxTest"
-import  DataCheck  from "./containers/DataCheck/DataCheck";
+import CheckData  from "./containers/CheckData";
+import { Register } from "./containers/Register";
 
 
 const routes = [
@@ -29,7 +30,12 @@ const routes = [
   {
     path:"/data",
     exact:false,
-    component:DataCheck
+    component:CheckData
+  },
+  {
+    path:"/register",
+    exact:false,
+    component:Register
   }
 
 ];

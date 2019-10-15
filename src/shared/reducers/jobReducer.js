@@ -15,6 +15,9 @@ const jobReducer =(state=defaultJobState,action) =>{
         state = {...state, job: newState }
         break;
     }
+   // console.log("job:")
+    //console.log(state);
+
     return state;
 }
 
