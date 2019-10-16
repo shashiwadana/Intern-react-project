@@ -35,7 +35,8 @@ export class DataCheck extends Component {
       
     render() {
         const worker =this.props.worker.workers.workers;
-        console.log(worker);
+        console.log("worker");
+        console.log(this.props.worker.workers.workers);
         console.log(this.state.skillId);
     
         return (
