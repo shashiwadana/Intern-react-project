@@ -4,6 +4,8 @@ import ParentComponent from "./containers/ParentComponent"
 import ReduxTest from "./containers/ReduxTest"
 import CheckData  from "./containers/CheckData";
 import { Register } from "./containers/Register";
+import { Login } from "./containers/Login/Login";
+
 
 
 const routes = [
@@ -36,6 +38,11 @@ const routes = [
     path:"/register",
     exact:false,
     component:Register
+  },
+  {
+    path:"/login",
+    exact:false,
+    component:Login
   }
 
 ];

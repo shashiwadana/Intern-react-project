@@ -1,12 +1,14 @@
 import {combineReducers} from 'redux';
 import dealsReducer from './dealsReducer';
 import workerReducer from './WorkerReducer';
-import jobReducer from './jobReducer'
+import loginReducer from './loginReducer';
 
 const allReducers = combineReducers({
 	dealsReducer,
 	workerR:workerReducer,
-	jobR:jobReducer
+	loginR:loginReducer
+
+	
 });
 
 export default allReducers;

@@ -3120,6 +3120,9 @@ module.exports = DOMLazyTree;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return LOAD_WORKERS_COMPLETE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return LOAD_WORKERS_ERROR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return LOAD_JOB; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return LOGIN_BEGINS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return LOGIN_COMPLETE; });
+/* unused harmony export LOGIN_ERROR */
 /* DEAL ACTIONS */
 var LOAD_DEALS_BEGINS = 'LOAD_DEALS_BEGINS';
 var LOAD_DEALS_COMPLATE = 'LOAD_DEALS_COMPLATE';
@@ -3131,6 +3134,10 @@ var LOAD_WORKERS_COMPLETE = "LOAD_WORKERS_COMPLETE";
 var LOAD_WORKERS_ERROR = "LOAD_WORKERS_ERROR";
 
 var LOAD_JOB = "LOAD_JOB";
+
+var LOGIN_BEGINS = "LOGIN_BEGINS";
+var LOGIN_COMPLETE = "LOGIN_COMPLETE";
+var LOGIN_ERROR = "LOGIN_ERROR";
 
 /***/ }),
 /* 25 */
@@ -28066,7 +28073,7 @@ exports['default'] = thunk;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dealsReducer__ = __webpack_require__(268);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__WorkerReducer__ = __webpack_require__(269);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__jobReducer__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__loginReducer__ = __webpack_require__(270);
 
 
 
@@ -28075,7 +28082,8 @@ exports['default'] = thunk;
 var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({
 	dealsReducer: __WEBPACK_IMPORTED_MODULE_1__dealsReducer__["a" /* default */],
 	workerR: __WEBPACK_IMPORTED_MODULE_2__WorkerReducer__["a" /* default */],
-	jobR: __WEBPACK_IMPORTED_MODULE_3__jobReducer__["a" /* default */]
+	loginR: __WEBPACK_IMPORTED_MODULE_3__loginReducer__["a" /* default */]
+
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (allReducers);
@@ -28213,31 +28221,37 @@ var workerReducer = function workerReducer() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__ = __webpack_require__(24);
 
 
-var defaultJobState = {
-    job: undefined
-
-};
-
-var jobReducer = function jobReducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultJobState;
+var loginReducer = function loginReducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+        isloginPending: false,
+        isloginSuccess: false,
+        isloginError: null
+    };
     var action = arguments[1];
 
     switch (action.type) {
-        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["d" /* LOAD_JOB */]:
-            var newState = {
-                job: action.payload
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["h" /* LOGIN_BEGINS */]:
+            {
 
-            };
-            state = Object.assign({}, state, { job: newState });
-            break;
+                state = Object.assign({}, state, { isloginPending: action.payload });
+                break;
+            }
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["i" /* LOGIN_COMPLETE */]:
+            {
+                state = Object.assign({}, state, { isloginSuccess: action.payload });
+                break;
+            }
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["g" /* LOAD_WORKERS_ERROR */]:
+            {
+
+                state = Object.assign({}, state, { isloginError: action.payload });
+                break;
+            }
     }
-    // console.log("job:")
-    //console.log(state);
-
+    console.log(state);
     return state;
 };
-
-/* harmony default export */ __webpack_exports__["a"] = (jobReducer);
+/* harmony default export */ __webpack_exports__["a"] = (loginReducer);
 
 /***/ }),
 /* 271 */
@@ -28317,6 +28331,8 @@ var App = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__containers_ReduxTest__ = __webpack_require__(279);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__containers_CheckData__ = __webpack_require__(282);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__containers_Register__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__containers_Login_Login__ = __webpack_require__(288);
+
 
 
 
@@ -28348,6 +28364,10 @@ var routes = [{
   path: "/register",
   exact: false,
   component: __WEBPACK_IMPORTED_MODULE_5__containers_Register__["a" /* Register */]
+}, {
+  path: "/login",
+  exact: false,
+  component: __WEBPACK_IMPORTED_MODULE_6__containers_Login_Login__["a" /* Login */]
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (routes);
@@ -29903,6 +29923,156 @@ var Register = function (_Component) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 287 */,
+/* 288 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Login; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__);
+var _jsxFileName = 'D:\\findYourWorker redux version\\Intern-react-project\\src\\shared\\containers\\Login\\Login.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var Login = function (_Component) {
+  _inherits(Login, _Component);
+
+  function Login(props) {
+    _classCallCheck(this, Login);
+
+    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+    _this.state = {
+      email: "",
+      password: ""
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(Login, [{
+    key: 'handleSubmit',
+    value: function handleSubmit(event) {
+      console.log(this.state.email);
+      event.preventDefault();
+      __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default()("http://127.0.0.1:3001/user/login", {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          UserEmail: this.state.email,
+          Password: this.state.password
+
+        }) }, { withCredentials: 'include' }).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        if (res.message === 'Authorized') {
+          console.log("authorized");
+          console.log(res);
+        } else {
+          console.log("error");
+        }
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this,
+          _React$createElement;
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 40
+          },
+          __self: this
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'form',
+          { onSubmit: this.handleSubmit, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 41
+            },
+            __self: this
+          },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'formgroup',
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 43
+              },
+              __self: this
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+              type: 'email',
+              value: this.state.email,
+              onChange: function onChange(event) {
+                _this2.setState({ email: event.target.value });
+              },
+              placeholder: 'Email',
+              id: 'email',
+              required: true,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 44
+              },
+              __self: this
+            })
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'formgroup',
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 53
+              },
+              __self: this
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', (_React$createElement = {
+              type: 'password',
+              value: this.state.password
+            }, _defineProperty(_React$createElement, 'type', 'password'), _defineProperty(_React$createElement, 'onChange', function onChange(event) {
+              _this2.setState({ password: event.target.value });
+            }), _defineProperty(_React$createElement, 'placeholder', 'Password '), _defineProperty(_React$createElement, 'id', 'password'), _defineProperty(_React$createElement, 'required', true), _defineProperty(_React$createElement, '__source', {
+              fileName: _jsxFileName,
+              lineNumber: 54
+            }), _defineProperty(_React$createElement, '__self', this), _React$createElement))
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Submit', __source: {
+              fileName: _jsxFileName,
+              lineNumber: 65
+            },
+            __self: this
+          })
+        )
+      );
+    }
+  }]);
+
+  return Login;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* unused harmony default export */ var _unused_webpack_default_export = (Login);
 
 /***/ })
 /******/ ]);
