@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import fetch from 'isomorphic-fetch';
+import {connect} from 'react-redux';
+import {loginUser} from '../../actions/LoginActions'
 export class Login extends Component {
    constructor(props) {
        super(props)
@@ -29,6 +31,8 @@ export class Login extends Component {
         if(res.message==='Authorized'){
         console.log("authorized");
         console.log(res);
+        console.log(this.props);
+    this.props.login(this.state.email,this.state.password);
         this.setState({
             email : "",
             password : ""
@@ -76,5 +80,12 @@ required
         )
     }
 }
-
-export default Login
+const mapDispatchToProps = (dispatch) => {
+    return{
+   login: (email,password) => dispatch(loginUser(email,password))
+    }
+}
+const mapStateToProps = (state) =>{
+    return{}
+}
+export default connect (mapStateToProps,mapDispatchToProps) (Login)

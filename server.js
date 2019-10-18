@@ -3282,7 +3282,7 @@ module.exports = reactProdInvariant;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return LOAD_JOB; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return LOGIN_BEGINS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return LOGIN_COMPLETE; });
-/* unused harmony export LOGIN_ERROR */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return LOGIN_ERROR; });
 /* DEAL ACTIONS */
 var LOAD_DEALS_BEGINS = 'LOAD_DEALS_BEGINS';
 var LOAD_DEALS_COMPLATE = 'LOAD_DEALS_COMPLATE';
@@ -62508,6 +62508,8 @@ module.exports = require("module");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_LoginActions__ = __webpack_require__(497);
 var _jsxFileName = 'D:\\findYourWorker redux version\\Intern-react-project\\src\\shared\\containers\\Login\\Login.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -62519,6 +62521,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
 
 
 
@@ -62561,6 +62565,8 @@ var Login = function (_Component) {
                 if (res.message === 'Authorized') {
                     console.log("authorized");
                     console.log(res);
+                    console.log(_this2.props);
+                    _this2.props.login(_this2.state.email, _this2.state.password);
                     _this2.setState({
                         email: "",
                         password: ""
@@ -62584,7 +62590,7 @@ var Login = function (_Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 47
+                        lineNumber: 51
                     },
                     __self: this
                 },
@@ -62592,7 +62598,7 @@ var Login = function (_Component) {
                     'form',
                     { onSubmit: this.handleSubmit, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 48
+                            lineNumber: 52
                         },
                         __self: this
                     },
@@ -62601,7 +62607,7 @@ var Login = function (_Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 50
+                                lineNumber: 54
                             },
                             __self: this
                         },
@@ -62616,7 +62622,7 @@ var Login = function (_Component) {
                             required: true,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 51
+                                lineNumber: 55
                             },
                             __self: this
                         })
@@ -62626,7 +62632,7 @@ var Login = function (_Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 60
+                                lineNumber: 64
                             },
                             __self: this
                         },
@@ -62637,12 +62643,12 @@ var Login = function (_Component) {
                             _this3.setState({ password: event.target.value });
                         }), _defineProperty(_React$createElement, 'placeholder', 'Password '), _defineProperty(_React$createElement, 'id', 'password'), _defineProperty(_React$createElement, 'required', true), _defineProperty(_React$createElement, '__source', {
                             fileName: _jsxFileName,
-                            lineNumber: 61
+                            lineNumber: 65
                         }), _defineProperty(_React$createElement, '__self', this), _React$createElement))
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Submit', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 72
+                            lineNumber: 76
                         },
                         __self: this
                     })
@@ -62653,8 +62659,73 @@ var Login = function (_Component) {
 
     return Login;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        login: function login(email, password) {
+            return dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_LoginActions__["a" /* loginUser */])(email, password));
+        }
+    };
+};
+var mapStateToProps = function mapStateToProps(state) {
+    return {};
+};
+/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(Login));
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Login);
+/***/ }),
+/* 496 */,
+/* 497 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export loginBegin */
+/* unused harmony export login */
+/* unused harmony export loginError */
+/* harmony export (immutable) */ __webpack_exports__["a"] = loginUser;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ActionType__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__);
+
+
+
+var loginBegin = function loginBegin(isloginPending) {
+  return {
+    type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["h" /* LOGIN_BEGINS */],
+    payload: isloginPending
+  };
+};
+
+var login = function login(isloginSuccess) {
+  return {
+    type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["i" /* LOGIN_COMPLETE */],
+    payload: isloginSuccess
+  };
+};
+
+var loginError = function loginError(isloginError) {
+  return {
+    type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["j" /* LOGIN_ERROR */],
+    payload: isloginError
+  };
+};
+
+//Api call 
+
+function loginUser(email, password) {
+  return function (dispatch) {
+    dispatch(loginBegin(true));
+    dispatch(login(false));
+    dispatch(loginError(null));
+
+    callLoginApi(email, password, function (error) {
+      dispatch(loginBegin(false));
+      if (!error) {
+        dispatch(login(true));
+      } else {
+        dispatch(loginError(error));
+      }
+    });
+  };
+}
 
 /***/ })
 /******/ ]);

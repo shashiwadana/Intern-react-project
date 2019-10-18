@@ -29,27 +29,7 @@ export function loginUser(email, password) {
         dispatch(loginBegin(false));
         if (!error) {
           dispatch(login(true));
-         /*
-          return   fetch("http://127.0.0.1:3001/user/login",{
-            method:'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-          UserEmail:this.email,
-          Password:this.password,
-         
-            })})
-            .then (res=>{if(res.message==='Authorized'){
-              console.log("authorized");
-            }
-          else{
-            console.log("error");
-          }
-          })*/
-
-
+        
         } else {
           dispatch(loginError(error));
         }
