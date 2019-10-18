@@ -14,6 +14,7 @@ export class Login extends Component {
    }
    handleSubmit(event) {
     console.log(this.state.email);
+    
     event.preventDefault();
     fetch("http://127.0.0.1:3001/user/login",{
       method:'POST',
@@ -30,9 +31,10 @@ export class Login extends Component {
       .then (res=>{
         if(res.message==='Authorized'){
         console.log("authorized");
-        console.log(res);
+    
         console.log(this.props);
-    this.props.login(this.state.email,this.state.password);
+        let { email, password } = this.state;
+        this.props.login(email,password);
         this.setState({
             email : "",
             password : ""
@@ -45,6 +47,7 @@ export class Login extends Component {
       console.log("error");
     }
     })
+    
   }
     render() {
         return (
@@ -81,9 +84,9 @@ required
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    return{
-   login: (email,password) => dispatch(loginUser(email,password))
-    }
+    return({
+        login: (email,password) => {dispatch(loginUser(email,password))}
+         })
 }
 const mapStateToProps = (state) =>{
     return{}

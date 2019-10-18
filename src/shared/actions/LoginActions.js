@@ -20,7 +20,8 @@ export const loginError =(isloginError) =>({
 //Api call 
  
 export function loginUser(email, password) {
-    return dispatch => {   
+    return dispatch => { 
+      
       dispatch(loginBegin(true));
       dispatch(login(false));
       dispatch(loginError(null));
