@@ -29,6 +29,13 @@ export class Login extends Component {
         if(res.message==='Authorized'){
         console.log("authorized");
         console.log(res);
+        this.setState({
+            email : "",
+            password : ""
+  
+          });
+          localStorage.setItem('sessionType', res.result.sessionType);
+          localStorage.setItem("UserId" , res.result.UserId);
       }
     else{
       console.log("error");

@@ -29950,126 +29950,135 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var Login = function (_Component) {
-  _inherits(Login, _Component);
+    _inherits(Login, _Component);
 
-  function Login(props) {
-    _classCallCheck(this, Login);
+    function Login(props) {
+        _classCallCheck(this, Login);
 
-    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 
-    _this.state = {
-      email: "",
-      password: ""
-    };
-    _this.handleSubmit = _this.handleSubmit.bind(_this);
-    return _this;
-  }
+        _this.state = {
+            email: "",
+            password: ""
+        };
+        _this.handleSubmit = _this.handleSubmit.bind(_this);
+        return _this;
+    }
 
-  _createClass(Login, [{
-    key: 'handleSubmit',
-    value: function handleSubmit(event) {
-      console.log(this.state.email);
-      event.preventDefault();
-      __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default()("http://127.0.0.1:3001/user/login", {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          UserEmail: this.state.email,
-          Password: this.state.password
+    _createClass(Login, [{
+        key: 'handleSubmit',
+        value: function handleSubmit(event) {
+            var _this2 = this;
 
-        }) }, { withCredentials: 'include' }).then(function (res) {
-        return res.json();
-      }).then(function (res) {
-        if (res.message === 'Authorized') {
-          console.log("authorized");
-          console.log(res);
-        } else {
-          console.log("error");
+            console.log(this.state.email);
+            event.preventDefault();
+            __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default()("http://127.0.0.1:3001/user/login", {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    UserEmail: this.state.email,
+                    Password: this.state.password
+
+                }) }, { withCredentials: 'include' }).then(function (res) {
+                return res.json();
+            }).then(function (res) {
+                if (res.message === 'Authorized') {
+                    console.log("authorized");
+                    console.log(res);
+                    _this2.setState({
+                        email: "",
+                        password: ""
+
+                    });
+                    localStorage.setItem('sessionType', res.result.sessionType);
+                    localStorage.setItem("UserId", res.result.UserId);
+                } else {
+                    console.log("error");
+                }
+            });
         }
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this,
-          _React$createElement;
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this,
+                _React$createElement;
 
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 40
-          },
-          __self: this
-        },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'form',
-          { onSubmit: this.handleSubmit, __source: {
-              fileName: _jsxFileName,
-              lineNumber: 41
-            },
-            __self: this
-          },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'formgroup',
-            {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 43
-              },
-              __self: this
-            },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-              type: 'email',
-              value: this.state.email,
-              onChange: function onChange(event) {
-                _this2.setState({ email: event.target.value });
-              },
-              placeholder: 'Email',
-              id: 'email',
-              required: true,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 44
-              },
-              __self: this
-            })
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'formgroup',
-            {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 53
-              },
-              __self: this
-            },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', (_React$createElement = {
-              type: 'password',
-              value: this.state.password
-            }, _defineProperty(_React$createElement, 'type', 'password'), _defineProperty(_React$createElement, 'onChange', function onChange(event) {
-              _this2.setState({ password: event.target.value });
-            }), _defineProperty(_React$createElement, 'placeholder', 'Password '), _defineProperty(_React$createElement, 'id', 'password'), _defineProperty(_React$createElement, 'required', true), _defineProperty(_React$createElement, '__source', {
-              fileName: _jsxFileName,
-              lineNumber: 54
-            }), _defineProperty(_React$createElement, '__self', this), _React$createElement))
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Submit', __source: {
-              fileName: _jsxFileName,
-              lineNumber: 65
-            },
-            __self: this
-          })
-        )
-      );
-    }
-  }]);
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 47
+                    },
+                    __self: this
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'form',
+                    { onSubmit: this.handleSubmit, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 48
+                        },
+                        __self: this
+                    },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'formgroup',
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 50
+                            },
+                            __self: this
+                        },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                            type: 'email',
+                            value: this.state.email,
+                            onChange: function onChange(event) {
+                                _this3.setState({ email: event.target.value });
+                            },
+                            placeholder: 'Email',
+                            id: 'email',
+                            required: true,
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 51
+                            },
+                            __self: this
+                        })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'formgroup',
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 60
+                            },
+                            __self: this
+                        },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', (_React$createElement = {
+                            type: 'password',
+                            value: this.state.password
+                        }, _defineProperty(_React$createElement, 'type', 'password'), _defineProperty(_React$createElement, 'onChange', function onChange(event) {
+                            _this3.setState({ password: event.target.value });
+                        }), _defineProperty(_React$createElement, 'placeholder', 'Password '), _defineProperty(_React$createElement, 'id', 'password'), _defineProperty(_React$createElement, 'required', true), _defineProperty(_React$createElement, '__source', {
+                            fileName: _jsxFileName,
+                            lineNumber: 61
+                        }), _defineProperty(_React$createElement, '__self', this), _React$createElement))
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Submit', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 72
+                        },
+                        __self: this
+                    })
+                )
+            );
+        }
+    }]);
 
-  return Login;
+    return Login;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 /* unused harmony default export */ var _unused_webpack_default_export = (Login);
