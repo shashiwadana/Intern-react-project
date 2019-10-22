@@ -50810,7 +50810,7 @@ var Login = function (_Component) {
                         email = _state.email,
                         password = _state.password;
 
-                    _this2.props.login(email, password);
+                    _this2.props.loginU(email, password);
                     _this2.setState({
                         email: "",
                         password: ""
@@ -50905,7 +50905,7 @@ var Login = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
-        login: function login(email, password) {
+        loginU: function loginU(email, password) {
             dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_LoginActions__["a" /* loginUser */])(email, password));
         }
     };

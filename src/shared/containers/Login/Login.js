@@ -34,7 +34,7 @@ export class Login extends Component {
     
         console.log(this.props);
         let { email, password } = this.state;
-        this.props.login(email,password);
+        this.props.loginU(email,password);
         this.setState({
             email : "",
             password : ""
@@ -85,7 +85,7 @@ required
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        login: (email,password) => {dispatch(loginUser(email,password))}
+        loginU: (email,password) => {dispatch(loginUser(email,password))}
          }
 }
 
