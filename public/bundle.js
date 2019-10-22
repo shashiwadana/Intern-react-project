@@ -2646,9 +2646,9 @@ module.exports = warning;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return LOGIN_BEGINS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return LOGIN_COMPLETE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return LOGIN_ERROR; });
-/* unused harmony export REQUEST_FETCHING_BEGIN */
-/* unused harmony export REQUEST_FETCHING_COMPLETED */
-/* unused harmony export REQUEST_FETCHING_ERROR */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return REQUEST_FETCHING_BEGIN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return REQUEST_FETCHING_COMPLETED; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return REQUEST_FETCHING_ERROR; });
 /* DEAL ACTIONS */
 var LOAD_DEALS_BEGINS = 'LOAD_DEALS_BEGINS';
 var LOAD_DEALS_COMPLATE = 'LOAD_DEALS_COMPLATE';
@@ -28081,6 +28081,8 @@ exports['default'] = thunk;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dealsReducer__ = __webpack_require__(268);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__WorkerReducer__ = __webpack_require__(269);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__loginReducer__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__requestsReducer__ = __webpack_require__(292);
+
 
 
 
@@ -28089,7 +28091,8 @@ exports['default'] = thunk;
 var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({
 	dealsReducer: __WEBPACK_IMPORTED_MODULE_1__dealsReducer__["a" /* default */],
 	workerR: __WEBPACK_IMPORTED_MODULE_2__WorkerReducer__["a" /* default */],
-	loginR: __WEBPACK_IMPORTED_MODULE_3__loginReducer__["a" /* default */]
+	loginR: __WEBPACK_IMPORTED_MODULE_3__loginReducer__["a" /* default */],
+	requestR: __WEBPACK_IMPORTED_MODULE_4__requestsReducer__["a" /* default */]
 
 });
 
@@ -28340,6 +28343,8 @@ var App = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__containers_CheckData__ = __webpack_require__(282);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__containers_Register__ = __webpack_require__(285);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__containers_Login_Login__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__containers_Request_Request__ = __webpack_require__(290);
+
 
 
 
@@ -28376,6 +28381,10 @@ var routes = [{
   path: "/login",
   exact: false,
   component: __WEBPACK_IMPORTED_MODULE_6__containers_Login_Login__["a" /* Login */]
+}, {
+  path: "/requests",
+  exact: false,
+  component: __WEBPACK_IMPORTED_MODULE_7__containers_Request_Request__["a" /* default */]
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (routes);
@@ -30202,6 +30211,181 @@ function loginUser(email, password) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 289 */,
+/* 290 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_RequestAction__ = __webpack_require__(291);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(39);
+var _jsxFileName = 'D:\\findYourWorker redux version\\Intern-react-project\\src\\shared\\containers\\Request\\Request.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var Request = function (_Component) {
+    _inherits(Request, _Component);
+
+    function Request(props) {
+        _classCallCheck(this, Request);
+
+        var _this = _possibleConstructorReturn(this, (Request.__proto__ || Object.getPrototypeOf(Request)).call(this, props));
+
+        _this.state = {};
+        return _this;
+    }
+
+    _createClass(Request, [{
+        key: 'render',
+        value: function render() {
+            var request = this.props.reqst;
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 18
+                    },
+                    __self: this
+                },
+                request
+            );
+        }
+    }], [{
+        key: 'initialAction',
+        value: function initialAction() {
+            return Object(__WEBPACK_IMPORTED_MODULE_1__actions_RequestAction__["a" /* fetchRequests */])();
+        }
+    }]);
+
+    return Request;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+var mapStateToProps = function mapStateToProps(state) {
+    return {
+        reqst: state.requestR.reqst.reqst
+    };
+};
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(mapStateToProps)(Request));
+
+/***/ }),
+/* 291 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = fetchRequests;
+/* unused harmony export requestBegin */
+/* unused harmony export requests */
+/* unused harmony export requestsError */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ActionType__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__);
+
+
+
+function fetchRequests() {
+    return function (dispatch) {
+        dispatch(requestBegin());
+        console.log('Requests fetching');
+
+        return __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default()("http://127.0.0.1:3001/ordersClient/completedorders/" + localStorage.getItem("UserId")).then(function (res) {
+            return res.json();
+        }).then(function (json) {
+            dispatch(requests(json));
+        }).catch(function (error) {
+            return dispatch(requestsError(error));
+        });
+    };
+}
+
+var requestBegin = function requestBegin() {
+    return {
+        type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["k" /* REQUEST_FETCHING_BEGIN */],
+        payload: "Requsests are fetching "
+    };
+};
+
+var requests = function requests(reqsts) {
+    return {
+        type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["l" /* REQUEST_FETCHING_COMPLETED */],
+        payload: reqsts
+    };
+};
+
+var requestsError = function requestsError(error) {
+    return {
+        type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["m" /* REQUEST_FETCHING_ERROR */],
+        payload: error
+    };
+};
+
+/***/ }),
+/* 292 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__ = __webpack_require__(20);
+
+
+var defaultState = {
+    reqsts: undefined,
+    loadingMsg: undefined,
+    errorMsg: undefined
+};
+
+var requestsReducer = function requestsReducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["k" /* REQUEST_FETCHING_BEGIN */]:
+            {
+                var newState = {
+                    reqsts: undefined,
+                    loadingMsg: action.loadingMsg,
+                    errorMsg: ""
+                };
+                state = Object.assign({}, state, { reqsts: newState });
+                break;
+            }
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["l" /* REQUEST_FETCHING_COMPLETED */]:
+            {
+                var _newState = {
+                    reqsts: action.payload,
+                    loadingMsg: action.loadingMsg,
+                    errorMsg: ""
+                };
+                state = Object.assign({}, state, { reqsts: _newState });
+                break;
+            }
+        case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["m" /* REQUEST_FETCHING_ERROR */]:
+            {
+                var _newState2 = {
+                    reqsts: undefined,
+                    loadingMsg: "",
+                    errorMsg: action.errorMsg
+                };
+                state = Object.assign({}, state, { reqsts: _newState2 });
+                break;
+            }
+    }
+    return state;
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (requestsReducer);
 
 /***/ })
 /******/ ]);

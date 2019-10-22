@@ -5,6 +5,7 @@ import ReduxTest from "./containers/ReduxTest"
 import CheckData  from "./containers/CheckData";
 import { Register } from "./containers/Register";
 import { Login } from "./containers/Login/Login";
+import Request from "./containers/Request/Request";
 
 
 
@@ -43,6 +44,11 @@ const routes = [
     path:"/login",
     exact:false,
     component:Login
+  },
+  {
+    path:"/requests",
+    exact:false,
+    component:Request
   }
 
 ];
