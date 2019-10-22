@@ -9,18 +9,19 @@ const loginReducer =(state={
         case actionType.LOGIN_BEGINS:
         {
             
-            state={...state,isloginPending:action.payload}
+            state={...state,isloginPending:action.isloginPending}
             break;
         }
         case actionType.LOGIN_COMPLETE:
         {
-            state={...state,isloginSuccess:action.payload}
+            
+            state={...state,isloginSuccess:action.isloginSuccess}
             break;
         }
         case actionType.LOAD_WORKERS_ERROR:
         {
            
-            state={...state,isloginError:action.payload}
+            state={...state,isloginError:action.isloginError}
             break;
         }
     }

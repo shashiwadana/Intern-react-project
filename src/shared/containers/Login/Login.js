@@ -13,9 +13,8 @@ export class Login extends Component {
        this.handleSubmit=this.handleSubmit.bind(this); 
    }
    handleSubmit(event) {
-    console.log(this.state.email);
-    
     event.preventDefault();
+    
     fetch("http://127.0.0.1:3001/user/login",{
       method:'POST',
       headers: {
@@ -30,11 +29,9 @@ export class Login extends Component {
       .then (res=>res.json())
       .then (res=>{
         if(res.message==='Authorized'){
-        console.log("authorized");
-    
-        console.log(this.props);
-        let { email, password } = this.state;
-        this.props.loginU(email,password);
+        console.log("authorized");           
+        //let { email, password } = this.state;
+        loginUser(this.state.email,this.state.password);
         this.setState({
             email : "",
             password : ""
@@ -48,8 +45,13 @@ export class Login extends Component {
     }
     })
     
+   //let { email, password } = this.state;
+  // loginUser(email, password);
+    
   }
     render() {
+        let {isloginPending, isloginSuccess, isloginError} = this.props;
+        
         return (
             <div>
                 <form  onSubmit={this.handleSubmit}> 
@@ -78,6 +80,10 @@ required
 
 <input type="submit" value="Submit" />
 
+
+{ isloginPending && <div>Please wait...</div> }
+{ isloginSuccess && <div>Success.</div> }
+{ isloginError && <div>{isloginError.message}</div> }
 </form> 
             </div>
         )
@@ -85,11 +91,15 @@ required
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        loginU: (email,password) => {dispatch(loginUser(email,password))}
-         }
+       // login: (email,password) => dispatch(loginUser(email,password))
+         };
 }
 
 const mapStateToProps = (state) =>{
-    return{}
+    return{
+        isloginPending: state.loginR.isloginPending,
+        isloginSuccess:state.loginR.isloginSuccess,
+        isloginError:state.loginR.isloginError 
+    }
 }
-export default connect (mapStateToProps,mapDispatchToProps) (Login)
+export default connect (mapStateToProps,mapDispatchToProps) (Login);

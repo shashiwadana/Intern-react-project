@@ -1,20 +1,19 @@
 import * as actionType from './ActionType';
-import fetch from 'isomorphic-fetch';
-
+//import fetch from 'isomorphic-fetch';
 
 export const loginBegin =(isloginPending) =>({
     type :actionType.LOGIN_BEGINS,
-    payload:isloginPending
+    isloginPending
 });
 
 export const login =(isloginSuccess) =>({
     type :actionType.LOGIN_COMPLETE,
-    payload:isloginSuccess
+    isloginSuccess
 });
 
 export const loginError =(isloginError) =>({
     type :actionType.LOGIN_ERROR,
-    payload:isloginError
+    isloginError
 });
 
 //Api call 
