@@ -30091,6 +30091,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
         }
     };
 };
+
 var mapStateToProps = function mapStateToProps(state) {
     return {};
 };

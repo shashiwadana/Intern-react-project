@@ -84,10 +84,11 @@ required
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    return({
+    return {
         login: (email,password) => {dispatch(loginUser(email,password))}
-         })
+         }
 }
+
 const mapStateToProps = (state) =>{
     return{}
 }
