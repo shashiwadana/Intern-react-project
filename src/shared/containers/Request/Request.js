@@ -5,23 +5,27 @@ import {connect} from 'react-redux';
      constructor(props) {
          super(props)
      
-         this.state = {
-              
-         }
      }
      static initialAction(){
+       
        return fetchRequests();
      }
     render() {
-        const request = this.props.reqst;
+        const request = this.props.reqst.reqsts;
+        console.log(this.props.reqst);
+        
+        const Order = request.map((id)=>{
+            return<div>{id.OrderId}</div>
+        });
+        
         return (
             <div>
-                {request}
+                {Order}
             </div>
         )
     }
 }
 const mapStateToProps = state =>({
-    reqst:state.requestR.reqst.reqst
+    reqst:state.requestR.reqsts
 })
 export default connect(mapStateToProps)(Request);

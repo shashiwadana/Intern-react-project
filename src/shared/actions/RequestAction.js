@@ -2,11 +2,12 @@ import * as actionType from './ActionType';
 import fetch from 'isomorphic-fetch';
 
 export function fetchRequests() {
+   
     return dispatch => {
         dispatch (requestBegin());
         console.log('Requests fetching');
-
-        return fetch("http://127.0.0.1:3001/ordersClient/completedorders/"+localStorage.getItem("UserId"))
+       
+        return fetch("http://127.0.0.1:3001/ordersClient/completedorders/177" ,{withCredentials:"include"})
         .then(res => res.json())
         .then(json =>{
             dispatch(requests(json));
@@ -22,7 +23,7 @@ export const requestBegin = () =>({
 
 export const requests =(reqsts) =>({
     type :actionType.REQUEST_FETCHING_COMPLETED,
-    payload: reqsts
+    payload: reqsts.result[0]
 });
 
 export const requestsError = (error) => ({
