@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import fetch from 'isomorphic-fetch';
+//import fetch from 'isomorphic-fetch';
 import {connect} from 'react-redux';
 import {loginUser} from '../../actions/LoginActions'
-export class Login extends Component {
+class Login extends Component {
    constructor(props) {
        super(props)
    
@@ -12,45 +12,17 @@ export class Login extends Component {
        }
        this.handleSubmit=this.handleSubmit.bind(this); 
    }
-   handleSubmit(event) {
-    event.preventDefault();
-    
-    fetch("http://127.0.0.1:3001/user/login",{
-      method:'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-    UserEmail:this.state.email,
-    Password:this.state.password,
    
-      })},{withCredentials:'include'})
-      .then (res=>res.json())
-      .then (res=>{
-        if(res.message==='Authorized'){
-        console.log("authorized");           
-        //let { email, password } = this.state;
-        loginUser(this.state.email,this.state.password);
-        this.setState({
-            email : "",
-            password : ""
-  
-          });
-          localStorage.setItem('sessionType', res.result.sessionType);
-          localStorage.setItem("UserId" , res.result.UserId);
-      }
-    else{
-      console.log("error");
-    }
-    })
+   handleSubmit(event) {
     
-   //let { email, password } = this.state;
-  // loginUser(email, password);
+    event.preventDefault();
+    let {email,password} =this.state;        
+    this.props.login(email,password);
     
   }
     render() {
         let {isloginPending, isloginSuccess, isloginError} = this.props;
+        console.log(isloginPending);
         
         return (
             <div>
@@ -77,13 +49,11 @@ id="password"
 required
 />
 </formgroup>
-
 <input type="submit" value="Submit" />
-
-
 { isloginPending && <div>Please wait...</div> }
 { isloginSuccess && <div>Success.</div> }
 { isloginError && <div>{isloginError.message}</div> }
+
 </form> 
             </div>
         )
@@ -91,8 +61,8 @@ required
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-       // login: (email,password) => dispatch(loginUser(email,password))
-         };
+       login: (...args) => dispatch(loginUser(...args))
+   };
 }
 
 const mapStateToProps = (state) =>{

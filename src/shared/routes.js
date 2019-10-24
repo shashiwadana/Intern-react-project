@@ -4,7 +4,7 @@ import ParentComponent from "./containers/ParentComponent"
 import ReduxTest from "./containers/ReduxTest"
 import CheckData  from "./containers/CheckData";
 import { Register } from "./containers/Register";
-import { Login } from "./containers/Login/Login";
+import  Login  from "./containers/Login/Login";
 import Request from "./containers/Request/Request";
 
 

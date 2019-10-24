@@ -28243,22 +28243,23 @@ var loginReducer = function loginReducer() {
         case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["h" /* LOGIN_BEGINS */]:
             {
 
-                state = Object.assign({}, state, { isloginPending: action.isloginPending });
+                state = Object.assign({}, state, { isloginPending: action.payload });
                 break;
             }
         case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["i" /* LOGIN_COMPLETE */]:
             {
 
-                state = Object.assign({}, state, { isloginSuccess: action.isloginSuccess });
+                state = Object.assign({}, state, { isloginSuccess: action.payload });
                 break;
             }
         case __WEBPACK_IMPORTED_MODULE_0__actions_ActionType__["g" /* LOAD_WORKERS_ERROR */]:
             {
 
-                state = Object.assign({}, state, { isloginError: action.isloginError });
+                state = Object.assign({}, state, { isloginError: action.payload });
                 break;
             }
     }
+    console.log("state is");
     console.log(state);
     return state;
 };
@@ -28435,7 +28436,7 @@ var routes = [{
 }, {
   path: "/login",
   exact: false,
-  component: __WEBPACK_IMPORTED_MODULE_6__containers_Login_Login__["a" /* Login */]
+  component: __WEBPACK_IMPORTED_MODULE_6__containers_Login_Login__["a" /* default */]
 }, {
   path: "/requests",
   exact: false,
@@ -29995,13 +29996,10 @@ var Register = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Login; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_LoginActions__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_LoginActions__ = __webpack_require__(288);
 var _jsxFileName = 'D:\\findYourWorker redux version\\Intern-react-project\\src\\shared\\containers\\Login\\Login.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -30015,6 +30013,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
+//import fetch from 'isomorphic-fetch';
 
 
 
@@ -30037,46 +30036,18 @@ var Login = function (_Component) {
     _createClass(Login, [{
         key: 'handleSubmit',
         value: function handleSubmit(event) {
-            var _this2 = this;
 
             event.preventDefault();
+            var _state = this.state,
+                email = _state.email,
+                password = _state.password;
 
-            __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default()("http://127.0.0.1:3001/user/login", {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    UserEmail: this.state.email,
-                    Password: this.state.password
-
-                }) }, { withCredentials: 'include' }).then(function (res) {
-                return res.json();
-            }).then(function (res) {
-                if (res.message === 'Authorized') {
-                    console.log("authorized");
-                    //let { email, password } = this.state;
-                    Object(__WEBPACK_IMPORTED_MODULE_3__actions_LoginActions__["a" /* loginUser */])(_this2.state.email, _this2.state.password);
-                    _this2.setState({
-                        email: "",
-                        password: ""
-
-                    });
-                    localStorage.setItem('sessionType', res.result.sessionType);
-                    localStorage.setItem("UserId", res.result.UserId);
-                } else {
-                    console.log("error");
-                }
-            });
-
-            //let { email, password } = this.state;
-            // loginUser(email, password);
+            this.props.login(email, password);
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this3 = this,
+            var _this2 = this,
                 _React$createElement;
 
             var _props = this.props,
@@ -30084,13 +30055,14 @@ var Login = function (_Component) {
                 isloginSuccess = _props.isloginSuccess,
                 isloginError = _props.isloginError;
 
+            console.log(isloginPending);
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 56
+                        lineNumber: 28
                     },
                     __self: this
                 },
@@ -30098,7 +30070,7 @@ var Login = function (_Component) {
                     'form',
                     { onSubmit: this.handleSubmit, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 57
+                            lineNumber: 29
                         },
                         __self: this
                     },
@@ -30107,7 +30079,7 @@ var Login = function (_Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 59
+                                lineNumber: 31
                             },
                             __self: this
                         },
@@ -30115,14 +30087,14 @@ var Login = function (_Component) {
                             type: 'email',
                             value: this.state.email,
                             onChange: function onChange(event) {
-                                _this3.setState({ email: event.target.value });
+                                _this2.setState({ email: event.target.value });
                             },
                             placeholder: 'Email',
                             id: 'email',
                             required: true,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 60
+                                lineNumber: 32
                             },
                             __self: this
                         })
@@ -30132,7 +30104,7 @@ var Login = function (_Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 69
+                                lineNumber: 41
                             },
                             __self: this
                         },
@@ -30140,15 +30112,15 @@ var Login = function (_Component) {
                             type: 'password',
                             value: this.state.password
                         }, _defineProperty(_React$createElement, 'type', 'password'), _defineProperty(_React$createElement, 'onChange', function onChange(event) {
-                            _this3.setState({ password: event.target.value });
+                            _this2.setState({ password: event.target.value });
                         }), _defineProperty(_React$createElement, 'placeholder', 'Password '), _defineProperty(_React$createElement, 'id', 'password'), _defineProperty(_React$createElement, 'required', true), _defineProperty(_React$createElement, '__source', {
                             fileName: _jsxFileName,
-                            lineNumber: 70
+                            lineNumber: 42
                         }), _defineProperty(_React$createElement, '__self', this), _React$createElement))
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Submit', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 81
+                            lineNumber: 52
                         },
                         __self: this
                     }),
@@ -30157,7 +30129,7 @@ var Login = function (_Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 84
+                                lineNumber: 53
                             },
                             __self: this
                         },
@@ -30168,7 +30140,7 @@ var Login = function (_Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 85
+                                lineNumber: 54
                             },
                             __self: this
                         },
@@ -30179,7 +30151,7 @@ var Login = function (_Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 86
+                                lineNumber: 55
                             },
                             __self: this
                         },
@@ -30192,9 +30164,12 @@ var Login = function (_Component) {
 
     return Login;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
-        // login: (email,password) => dispatch(loginUser(email,password))
+        login: function login() {
+            return dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_LoginActions__["a" /* loginUser */].apply(undefined, arguments));
+        }
     };
 };
 
@@ -30205,61 +30180,97 @@ var mapStateToProps = function mapStateToProps(state) {
         isloginError: state.loginR.isloginError
     };
 };
-/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(Login));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(Login));
 
 /***/ }),
 /* 288 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = loginUser;
 /* unused harmony export loginBegin */
 /* unused harmony export login */
 /* unused harmony export loginError */
-/* harmony export (immutable) */ __webpack_exports__["a"] = loginUser;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ActionType__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__);
 
-//import fetch from 'isomorphic-fetch';
+
+
+//Api call 
+
+function loginUser(email, password) {
+  console.log(email);
+  return function (dispatch) {
+    dispatch(loginBegin(true));
+    dispatch(login(false));
+    dispatch(loginError(null));
+
+    __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default()("http://127.0.0.1:3001/user/login", {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        UserEmail: email,
+        Password: password
+
+      }) }, { withCredentials: 'include' }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      if (res.message === 'Authorized') {
+        console.log("authorized");
+        dispatch(loginBegin(true));
+        dispatch(login(false));
+
+        /*
+         this.setState({
+             email : "",
+             password : ""
+               });
+           */
+        localStorage.setItem('sessionType', res.result.sessionType);
+        localStorage.setItem("UserId", res.result.UserId);
+      } else {
+        console.log("error");
+      }
+    });
+
+    /*
+    callLoginApi(email, password, error => {
+      dispatch(loginBegin(false));
+      if (!error) {
+        dispatch(login(true));
+      
+      } else {
+        dispatch(loginError(error));
+      }
+    });
+    */
+  };
+}
 
 var loginBegin = function loginBegin(isloginPending) {
   return {
     type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["h" /* LOGIN_BEGINS */],
-    isloginPending: isloginPending
+    payload: isloginPending
   };
 };
 
 var login = function login(isloginSuccess) {
   return {
     type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["i" /* LOGIN_COMPLETE */],
-    isloginSuccess: isloginSuccess
+    payload: isloginSuccess
   };
 };
 
 var loginError = function loginError(isloginError) {
   return {
     type: __WEBPACK_IMPORTED_MODULE_0__ActionType__["j" /* LOGIN_ERROR */],
-    isloginError: isloginError
+    payload: isloginError
   };
 };
-
-//Api call 
-
-function loginUser(email, password) {
-  return function (dispatch) {
-
-    dispatch(loginBegin(true));
-    dispatch(login(false));
-    dispatch(loginError(null));
-
-    callLoginApi(email, password, function (error) {
-      dispatch(loginBegin(false));
-      if (!error) {
-        dispatch(login(true));
-      } else {
-        dispatch(loginError(error));
-      }
-    });
-  };
-}
 
 /***/ }),
 /* 289 */
