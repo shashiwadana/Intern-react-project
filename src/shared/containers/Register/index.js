@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch';
+import { connect } from 'react-redux';
 export class Register extends Component {
     constructor(props) {
         super(props)
@@ -56,6 +57,7 @@ export class Register extends Component {
      
         return (
             <div>
+              
                 <form  onSubmit={this.handleSubmit}>
 
                 <formgroup>

@@ -29765,6 +29765,7 @@ var loadJob = function loadJob(job) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(29);
 var _jsxFileName = 'D:\\findYourWorker redux version\\Intern-react-project\\src\\shared\\containers\\Register\\index.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -29774,6 +29775,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -29851,7 +29853,7 @@ var Register = function (_Component) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 58
+            lineNumber: 59
           },
           __self: this
         },
@@ -29859,7 +29861,7 @@ var Register = function (_Component) {
           'form',
           { onSubmit: this.handleSubmit, __source: {
               fileName: _jsxFileName,
-              lineNumber: 59
+              lineNumber: 61
             },
             __self: this
           },
@@ -29868,7 +29870,7 @@ var Register = function (_Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 61
+                lineNumber: 63
               },
               __self: this
             },
@@ -29881,7 +29883,7 @@ var Register = function (_Component) {
               required: true,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 62
+                lineNumber: 64
               },
               __self: this
             })
@@ -29891,7 +29893,7 @@ var Register = function (_Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 71
+                lineNumber: 73
               },
               __self: this
             },
@@ -29904,7 +29906,7 @@ var Register = function (_Component) {
               required: true,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 72
+                lineNumber: 74
               },
               __self: this
             })
@@ -29914,7 +29916,7 @@ var Register = function (_Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 82
+                lineNumber: 84
               },
               __self: this
             },
@@ -29927,7 +29929,7 @@ var Register = function (_Component) {
               required: true,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 83
+                lineNumber: 85
               },
               __self: this
             })
@@ -29937,7 +29939,7 @@ var Register = function (_Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 93
+                lineNumber: 95
               },
               __self: this
             },
@@ -29949,7 +29951,7 @@ var Register = function (_Component) {
                 value: this.state.usertype,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 94
+                  lineNumber: 96
                 },
                 __self: this
               },
@@ -29957,7 +29959,7 @@ var Register = function (_Component) {
                 'option',
                 { value: '0', __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 99
+                    lineNumber: 101
                   },
                   __self: this
                 },
@@ -29967,7 +29969,7 @@ var Register = function (_Component) {
                 'option',
                 { value: '1', __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 100
+                    lineNumber: 102
                   },
                   __self: this
                 },
@@ -29977,7 +29979,7 @@ var Register = function (_Component) {
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Submit', __source: {
               fileName: _jsxFileName,
-              lineNumber: 104
+              lineNumber: 106
             },
             __self: this
           })
