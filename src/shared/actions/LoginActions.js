@@ -25,8 +25,8 @@ export function loginUser(email, password) {
       .then (res=>{
         if(res.message==='Authorized'){
         console.log("authorized");
-        dispatch(loginBegin(true));
-        dispatch(login(false));
+        dispatch(loginBegin(false));
+        dispatch(login(true));
         
        /*
         this.setState({
@@ -40,21 +40,11 @@ export function loginUser(email, password) {
       }
     else{
       console.log("error");
+      dispatch(loginError(error));
     }
     })
      
 
-      /*
-      callLoginApi(email, password, error => {
-        dispatch(loginBegin(false));
-        if (!error) {
-          dispatch(login(true));
-        
-        } else {
-          dispatch(loginError(error));
-        }
-      });
-      */
     }
   }
 

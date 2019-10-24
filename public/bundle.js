@@ -28259,7 +28259,7 @@ var loginReducer = function loginReducer() {
                 break;
             }
     }
-    console.log("state is");
+
     console.log(state);
     return state;
 };
@@ -30221,8 +30221,8 @@ function loginUser(email, password) {
     }).then(function (res) {
       if (res.message === 'Authorized') {
         console.log("authorized");
-        dispatch(loginBegin(true));
-        dispatch(login(false));
+        dispatch(loginBegin(false));
+        dispatch(login(true));
 
         /*
          this.setState({
@@ -30234,20 +30234,9 @@ function loginUser(email, password) {
         localStorage.setItem("UserId", res.result.UserId);
       } else {
         console.log("error");
-      }
-    });
-
-    /*
-    callLoginApi(email, password, error => {
-      dispatch(loginBegin(false));
-      if (!error) {
-        dispatch(login(true));
-      
-      } else {
         dispatch(loginError(error));
       }
     });
-    */
   };
 }
 

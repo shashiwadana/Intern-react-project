@@ -25,7 +25,7 @@ const loginReducer =(state={
             break;
         }
     }
-    console .log("state is");
+   
     console.log(state);
     return state;
 }
